@@ -1,0 +1,27 @@
+$column: 40px;
+$gutter: 44px;
+$grid-columns: 12;
+$max-width: 1170px;
+
+img {
+    max-width: 100%;
+}
+.side-nav{display:none;}
+body {
+    background: $baseColor;
+    margin:0;
+    padding:0;
+}
+a {
+/*    color:white;*/
+    text-decoration: none;
+}
+ul, ol {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+.container {
+    @include outer-container(1170px);
+}
+

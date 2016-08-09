@@ -1,0 +1,24 @@
+$main-menu-height: 100px;
+@mixin show{
+    height:auto;
+    width: 100%;
+    overflow: auto;
+    > li {
+        display:block;
+        width: 100%;
+    }
+}
+@mixin hide{
+    height:0;
+    width: 0;
+    overflow: hidden;
+}
+@mixin show-level_3{
+    background: darken($baseColor,10%);
+    position: absolute;
+    top:0;
+    left:100%;
+    bottom:0;
+    min-width:85%;
+    z-index: 10;
+}
