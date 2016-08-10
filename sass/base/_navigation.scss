@@ -1,7 +1,10 @@
 #page-header{
+    background:$baseColor;
+    height:$main-menu-height;
+    *{color:white !important;}
     .container {
         position: relative;
-        height:$main-menu-height;
+        height:100%;
 
         .navigation, .logo{
             @include span-columns(6);
@@ -21,20 +24,6 @@
             height:50px;
             width: auto;
         }
-        &:hover{
-            .logo img {
-                bottom:0;
-                top:auto;
-                margin-top: 0;
-            }
-            #main-nav.level_1{
-                top:0;
-                margin-top:0;
-            }
-            .level_2{
-                @include show;
-            }
-        }
     }
 
     #main-nav.level_1{
@@ -50,9 +39,24 @@
             }
         }
     }
-        .level_2, 
-        .level_3{
-            @include hide;
+    .level_2, 
+    .level_3{
+        @include hide;
+    }
+    &:hover{
+        height:$main-menu-height-hover;
+        .logo img {
+            bottom:0;
+            top:auto;
+            margin-top: 0;
         }
+        #main-nav.level_1{
+            top:0;
+            margin-top:0;
+        }
+        .level_2{
+            @include show;
+        }
+    }
 }
 

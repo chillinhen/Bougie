@@ -2,6 +2,12 @@
     
     $(function () {
         //alert('hallo');
+        $('a').each(function(){
+            var moreLink = $(this).attr('title');
+            if(moreLink == "more-infos"){
+                $(this).addClass('more-link');
+            }
+        });
 
         
         // responsive

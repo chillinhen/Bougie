@@ -2,14 +2,15 @@
 $foo: rgba (255,0,0, .5);
 $baseColor: #354a73; // blue
 $defaultColor: #000000;
-$grayColor: #eeeeee;
+$grayColor: #dcdcdc;
+$goldColor:#977f43;
 $inactiveColor: #7f889e;
 $lightGrayColor: #efefef;
 $orangeColor: #eb6909;
 $transparentWhite: rgba(255,255,255,0.8);
 $quoteColor: #b6c7ea;
 $whiteColor: #ffffff;
-
+$blackColor: #000000;
 /* ** NUMBERS ** */
 $defaultMargin: 20px;
 $defaultPadding: 15px;
@@ -17,3 +18,7 @@ $mediumParallaxContainer: 500px;
 $parallaxContainer: 1180px;
 $smallParallaxContainer: 350px;
 
+
+/*** HEIGHTS ***/
+$main-menu-height: 100px;
+$main-menu-height-hover: 345px;

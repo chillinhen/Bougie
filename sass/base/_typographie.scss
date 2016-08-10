@@ -1,17 +1,17 @@
 //@import "reset.css";
 
 $base-font-size:            100% !default;
-$base-line-height:          160% !default;
-$rem-base:                  16px !default;
+$base-line-height:          165% !default;
+$rem-base:                  14px !default;
 
 $paragraph-margin:          1.5rem;
 
 $headings-font-family:    "Open Sans", sans-serif !default;
 $body-font-family:        "Open Sans", sans-serif !default;
 
-$heading-text-color:        $dark-color-grey;
-$body-text-color:           $text-color;
-$text-muted-color:          lighten($text-color,25%);
+$heading-text-color:        $defaultColor;
+$body-text-color:           $defaultColor;
+$text-muted-color:          lighten($defaultColor,25%);
 
 %bold{font-weight: 600;};
 %unstyled-list{
@@ -19,11 +19,7 @@ $text-muted-color:          lighten($text-color,25%);
     list-style: none;
 }
 
-*{
-    color:red !important;
-}
 html,
-
 body {
     font-size: 100%;
     /*prevents ios safari from zooming on orientation change (maybe)*/
@@ -33,6 +29,7 @@ body {
 body {
     color: $body-text-color;
     font-family: $body-font-family;
+    font-size:$rem-base;
 }
 h1,
 h2,
@@ -40,84 +37,38 @@ h3,
 h4,
 h5,
 h6{
-    margin:0;
+    margin:0 0 .5em 0;
     padding:0;
     font-family: $headings-font-family;
-    line-height: 1.1;
-    font-weight:400;
     color: $heading-text-color;
-    #featured .portfolio-item &{
-        margin: 2em 0;
-        text-align:center;
-    }
-    @media screen and (max-device-width:$screen-md - 1){
-        margin: 0 0 0.5 * $paragraph-margin;   
-    }
-    @media screen and (min-device-width:$screen-md){
-        margin: 0 0 1 * $paragraph-margin;   
-    }
 
     a{
         text-decoration: none;
     }
-    &.section_headline{
-        margin:3 * $paragraph-margin 0 $paragraph-margin 0;
-        text-transform:uppercase;
-        font-weight:700;
-        color:$dark-color-grey;
-    }
-    .titles &{
-        text-transform: uppercase;
-        margin:0 1.5em;
-        line-height: 1.2;
-                @media screen and (max-device-width:$screen-xs) and (orientation:portrait){
-            margin-top:2em;
-        }
-        @media screen and (min-device-width:$screen-smallPad){
-            padding:1em 0;
-
-        }
-        @media screen and (min-device-width:$screen-md){
-            font-size: 2vw;
-        }
-
-    }
-    .teaser & {
-        font-weight: normal;
-        @media screen and (max-device-width:$screen-smallPad) and (min-device-width:$screen-md){
-            font-size: 2rem;
-        }
-
-        margin: 2em;
-        min-height: 40px;
-    }
-    .footer & {
-        display:none;
-    }
 }
 h1 {
-    font-size: 1.5em; /* 24px --> 24 ÷ 16 = 1.5 */
-    line-height: 1em; /* 24px --> 24 ÷ 24 = 1 */
+    font-size:6.25 * $rem-base;
+    line-height: 1.16;
+    font-weight:300;
 }
 
 h2 {
-    font-size: 1.375em; /* 22px --> 22 ÷ 16 = 1.375 */
-    line-height: 1.0909em; /* 24px --> 24 ÷ 22 = 1.090909(09) */
+    font-size:3.75 * $rem-base;
+    line-height: 1;
+    font-weight:300;
 }
 
-h3 {
-    font-size: 1.25em; /* 20px --> 20 ÷ 16 = 1.25 */
-    line-height: 1.2em; /* 24px --> 24 ÷ 20 = 1.2 */
+h3, h4 {
+    font-size:1.6 * $rem-base;
+    line-height: 1;
+    font-weight:300;
 }
 
-h4 {
-    font-size: 1.125em; /* 18px --> 18 ÷ 16 = 1.125 */
-    line-height: 1.333em; /* 24px --> 24 ÷ 18 = 1.3333333(3) */
-}
 
 h5, h6 {
-    font-size: 1em; /* 16px --> 16 ÷ 16 = 1 */
-    line-height: 1.5em; /* 24px --> 24 ÷ 16 = 1.5 */
+    font-size: $rem-base;
+    line-height: $base-line-height;
+    font-weight:600;
 }
 // paragraph text
 p {
@@ -126,6 +77,10 @@ p {
     font-size: $rem-base;
     font-weight: normal;
     line-height: $base-line-height;
+    
+    .ce_text &{
+        @extend %clearfix;
+    }
 
 
     &.lead {
@@ -142,9 +97,9 @@ p {
 }
 
 a{
-    color:$text-color;
+    color:$body-text-color;
     .logo &{
-        color:$dark-color-grey;
+        color:$defaultColor;
         body.home & {color:#fff;}
     }
     .footer &{
@@ -202,7 +157,7 @@ blockquote {
     position: relative;
     margin: 1.5rem 1rem 1.5rem 3rem;
     text-align: left;
-    border-left: 5px solid $base-color-grey;
+    border-left: 5px solid $baseColor;
     padding-left: 1em;
     text-indent: -0.4em;
     
@@ -256,6 +211,6 @@ table {
         @extend %bold;
     }
     tr:nth-child(even) td {
-        background-color: lighten($base-color-grey,10%);
+        background-color: lighten($baseColor,10%);
     }
 }
