@@ -1,62 +1,137 @@
 #page-header{
     background:$baseColor;
-    height:$main-menu-height;
-    *{color:white !important;}
-    .container {
-        position: relative;
-        height:100%;
-
-        .navigation, .logo{
-            @include span-columns(6);
-        }
-        #main-nav.level_1, .logo img{
-            position:absolute;
-            top:50%; 
-        }
-        #main-nav.level_1{
-            left:0;
-            margin-top:-1em;
-            width: 50%;
-        }
-        .logo img{
-            right:0;
-            margin-top:-25px;
-            height:50px;
-            width: auto;
-        }
-    }
-
-    #main-nav.level_1{
-        @include outer-container;
-        > li {
-            @include span-columns(4);
-            position: relative;
-            display:inline-block;
-            > .level_2 > li:hover > .level_3{
-                @include show-level_3;
-                height:$main-menu-height;
-                display:block;
-            }
-        }
-    }
-    .level_2, 
-    .level_3{
-        @include hide;
-    }
-    &:hover{
-        height:$main-menu-height-hover;
-        .logo img {
-            bottom:0;
-            top:auto;
-            margin-top: 0;
-        }
-        #main-nav.level_1{
-            top:0;
-            margin-top:0;
-        }
-        .level_2{
-            @include show;
+    *{color:white;} 
+    &.sticky{
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:99999;
+        
+        #top-head{
+            height:0;
+            overflow:hidden;
         }
     }
 }
 
+#navigation.container {
+        @include outer-container;
+        position: relative;
+        height:100%;
+        padding:3em 0;
+        .sticky & {
+               @include transition(all 500ms ease-in);
+               padding:1em 0;
+        }
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(space-between);
+        .nav-wrapper{
+            @include flex-basis(60%);
+            @include display(flex);
+            @include justify-content(space-between);
+            
+            > .mod_navigation{
+                @include flex(2);
+            }
+        }
+        .logo{
+             @include flex-basis(20%);
+        }
+        #main-nav {
+            text-transform:uppercase;
+            .level_1{
+                width: 100%;
+                @include display(flex);
+               
+                > li {
+                    @include flex-basis(100%/3);
+                    position:relative;
+                    padding: 0 3em;
+                    border-right:1px solid lighten($darkGrayColor,25%);
+                    &:last-child{
+                        border:0;
+                    }
+                    
+                }
+            }
+            .level_2, .level_3{
+                a{
+                   color:lighten($darkGrayColor,50%); 
+                   &:hover{
+                       color:$whiteColor;
+                   }
+                }
+            }
+            .level_2{
+                display:none;
+                
+                > li{
+                    &:hover{
+                        width:200%;
+                        display:block;
+                        .level_3{
+                            display:block;
+                            @include show-level_3;
+                        }
+                    }
+                }
+            }
+            .level_3{
+                display:none;
+            }
+        }
+        &:hover{
+            @include align-items(flex-end);
+            cursor: pointer;
+                #main-nav {
+                .level_2{
+                    display:block;
+                }
+            }
+        }
+    }
+.sitemap-footer{
+    padding:$sectionPadding $innerPadding;
+    background: $whiteColor;
+    ul.level_1{
+        padding-right:$innerPadding;
+        @include display(flex);
+        @include justify-content(space-between);
+        @include align-items(flex-start);
+
+        > li.submenu > a,
+        > li.submenu > span{
+            @extend %footerHeaderstyle;
+        }
+    }
+    hr {
+        margin-bottom: 2em;
+    }
+}
+.social-media {
+
+    li {
+        display:inline-block;
+        margin-right:.8em;
+        a{
+            &:before{
+                content:' ';
+                @include size(30px);
+                display:inline-block;
+                @extend %background-icon;
+            }
+            > span {display:none;}
+        }
+        .facebook:before{
+            background-image:url(../icons/facebook-grey.png);
+        }
+        .google-plus:before{
+            background-image:url(../icons/google-plus-grey.png);
+        }
+        .you-tube:before{
+            background-image:url(../icons/you-tube-grey.png);
+        }
+    }
+}

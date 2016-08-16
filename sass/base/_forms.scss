@@ -1,0 +1,63 @@
+input[type="text"], 
+input[type="submit"],
+input[type="email"],
+textarea{
+    padding: .7em 1.4em;
+    font-size: $rem-base;
+    border:0;
+}
+input[type="text"], 
+input[type="email"],
+textarea{
+    .rueckruf & {
+        width:100%;
+        border:1px solid $grayColor; 
+    }   
+}
+input[type="submit"]{
+    &.button{
+        @include button-style;
+    }
+}
+.rueckruf{
+    @include outer-container(70%);
+    .row {
+        @extend %clearfix;
+        margin:1.5em 0;
+        .widget-text{
+            @include span-columns(4);
+        }
+    }
+}
+.widget-headline{
+    > p {
+        @extend %lead;
+        color:darken($defaultColor,50%);
+    }
+}
+.widget-text{
+    .mod_form.newsletter & {
+        border:{
+            width:1px 1px 1px 0;
+            style:solid;
+            color:rgba(0,0,0,.1) rgba(0,0,0,.25) rgba(0,0,0,.25) transparent;
+        }
+        -webkit-box-shadow: 2px 2px 0 0 rgba(0,0,0,.25);
+        box-shadow: 2px 2px 0 0 rgba(0,0,0,.25);
+        + .widget-explanation{
+            margin-top: 1em;
+            > p {
+                font-size: $rem-base;
+                line-height: 1.2;
+            }
+        }
+        input[type="submit"]{
+            background: transparent url(../icons/icon-submit.png) no-repeat center center; 
+            text-indent:-999999px;
+            float: right;
+        }
+        input[type="text"]{
+            min-width:330px;
+        }
+    }
+}

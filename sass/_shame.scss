@@ -1,58 +1,31 @@
-$column: 40px;
-$gutter: 44px;
-$grid-columns: 12;
-$max-width: 1420px;
-
-img {
-    max-width: 100%;
-}
-.side-nav{display:none;}
-body {
-    background: $whiteColor;
-    margin:0;
-    padding:0;
-}
-a {
-/*    color:white;*/
-    text-decoration: none;
-}
-ul, ol {
-    list-style: none;
-    margin:0;
-    padding:0;
-}
-.container {
-    @include outer-container;
-}
-.banner{
-    &.bg-image{
-        @include display(flex);
-        @include flex-direction(column);
-        @include justify-content(center);
-        @include align-items(center);
-        .textPanel {
-            background: rgba(0,0,0,.5);
-            padding:1.5em 4.5em;
-            color:white;
-            text-transform:uppercase;
-            > * {
-                font-size: 1.8 * $rem-base;
-                color:inherit;
-                margin:0 !important;
-            }
+.panel{
+    padding:2em;
+    position: relative;
+    @extend .center-content;
+    figure{
+            margin:0;
         }
-    }
-}
-.col-12{
-    >[class*="col"]{
-        margin:10px 5px;
+    .ce_text{
         
-        &:first-child{
-            margin-left: 0;
+        .teaser{
+            margin:1em 0;
         }
-        &:last-child{
-            margin-right: 0;
+    }
+
+    p.more {
+        text-align:right;
+        margin:0;
+        a {
+            @extend .more-link;
+        }
+    }
+    @extend .darkText;
+    @extend .bg-white;
+    &:first-child{
+        @extend .orange-gradient;
+        @extend .white-text;
+        a {
+            color:$whiteColor !important;
         }
     }
 }
-

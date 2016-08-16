@@ -1,19 +1,32 @@
 /* ** COLORS ** */
-$foo: rgba (255,0,0, .5);
-$baseColor: #354a73; // blue
-$defaultColor: #000000;
+$foo: rgba (255,0,0, 1);
+
+$bgColor:#f2f0f0; //body.home BG
+$lighterbgColor:#fbfafa;
+
+$defaultColor: #666666;
+$blueColor: #354a73; // blue
 $grayColor: #dcdcdc;
-$goldColor:#977f43;
-$inactiveColor: #7f889e;
 $lightGrayColor: #efefef;
+$darkGrayColor: #2f2f2f;
+
+$goldColor:#977f43;
+$quoteColor: $goldColor;
 $orangeColor: #eb6909;
+
+$inactiveColor: #7f889e;
+
 $transparentWhite: rgba(255,255,255,0.8);
-$quoteColor: #b6c7ea;
 $whiteColor: #ffffff;
 $blackColor: #000000;
+
+$baseColor:$blackColor;
+
+
 /* ** NUMBERS ** */
 $defaultMargin: 20px;
 $defaultPadding: 15px;
+$sectionPadding: 6 * $defaultPadding;
 $mediumParallaxContainer: 500px;
 $parallaxContainer: 1180px;
 $smallParallaxContainer: 350px;
@@ -22,3 +35,4 @@ $smallParallaxContainer: 350px;
 /*** HEIGHTS ***/
 $main-menu-height: 100px;
 $main-menu-height-hover: 345px;
+$innerPadding:7.5vW;

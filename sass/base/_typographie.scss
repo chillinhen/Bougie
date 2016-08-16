@@ -9,15 +9,27 @@ $paragraph-margin:          1.5rem;
 $headings-font-family:    "Open Sans", sans-serif !default;
 $body-font-family:        "Open Sans", sans-serif !default;
 
-$heading-text-color:        $defaultColor;
+$heading-text-color:        $goldColor;
 $body-text-color:           $defaultColor;
 $text-muted-color:          lighten($defaultColor,25%);
 
+%lead{
+   font-size: $rem-base * 1.4;
+   line-height: 1.5;
+}
 %bold{font-weight: 600;};
 %unstyled-list{
     padding: 0;
     list-style: none;
 }
+%footerHeaderstyle{
+    font-size: 1.4 * $rem-base;
+    font-weight: 300;
+    color:$baseColor;
+    display:block;
+    margin-bottom:1em;
+}
+
 
 html,
 body {
@@ -31,6 +43,12 @@ body {
     font-family: $body-font-family;
     font-size:$rem-base;
 }
+a{
+    .mod_navigation &,
+    #top-head &{
+        text-decoration: none;
+    }
+}
 h1,
 h2,
 h3,
@@ -41,25 +59,40 @@ h6{
     padding:0;
     font-family: $headings-font-family;
     color: $heading-text-color;
-
+    font-weight:300;
     a{
         text-decoration: none;
     }
+/*    .goldHeadline & {
+        color:$goldColor !important;
+    }*/
+    .footer-data & {
+        display:none;
+    }
+    .sitemap-footer & {@extend %footerHeaderstyle;}
+    .ce_text &{ margin-bottom: 0;}
+    .text-teaser &{
+         color:darken($defaultColor,25%);
+         margin:1em 0;
+         @include house-icon;
+         padding:0 1em;
+         background-image:url(../icons/more-infos-gold.png);
+    }
 }
 h1 {
-    font-size:6.25 * $rem-base;
+    font-size:4.3 * $rem-base;
     line-height: 1.16;
     font-weight:300;
 }
 
 h2 {
-    font-size:3.75 * $rem-base;
+    font-size:3 * $rem-base;
     line-height: 1;
     font-weight:300;
 }
 
 h3, h4 {
-    font-size:1.6 * $rem-base;
+    font-size:1.5 * $rem-base;
     line-height: 1;
     font-weight:300;
 }
@@ -81,18 +114,11 @@ p {
     .ce_text &{
         @extend %clearfix;
     }
-
-
-    &.lead {
-        font-size: 1rem * 1.125;
-        line-height: 1.4;
+    .ce_text &:last-child{
+        margin-bottom: 0;
     }
-    /** Test: nice text-indent ***/
-    @media screen and (min-device-width:$screen-md){
-/*        main & + p{
-            text-indent: 1em;
-            margin-top: -$paragraph-margin;
-        }*/
+    &.lead{
+        @extend %lead;
     }
 }
 
@@ -118,16 +144,21 @@ strong{ @extend %bold;}
 // lists
 ul,
 ol {
+    list-style: none;
+    margin:0;
+    padding:0;
+    .ce_text & {
     padding-left: 1.5rem;
     margin-bottom:$paragraph-margin;
     list-style: square outside;
+    }
 
     li {
         line-height: $base-line-height;
     }
 
     &.inline {
-        margin: 0 1rem $paragraph-margin -1rem;
+        margin: 0 1em $paragraph-margin -1em;
         padding: 0;
         list-style: none;
         overflow: hidden;
@@ -135,7 +166,7 @@ ol {
         & > li {
             display: block;
             float: left;
-            margin-left: 1rem;
+            margin-left: $rem-base;
             list-style: none;
         }
     }
@@ -155,7 +186,7 @@ dd {
 // blockquotes
 blockquote {
     position: relative;
-    margin: 1.5rem 1rem 1.5rem 3rem;
+    margin: 1.5rem 1em 1.5rem 3rem;
     text-align: left;
     border-left: 5px solid $baseColor;
     padding-left: 1em;
@@ -166,7 +197,7 @@ blockquote {
     }
 
     p {
-        @extend .lead;
+        @extend %lead;
     }
     cite{
         font-size: smaller;

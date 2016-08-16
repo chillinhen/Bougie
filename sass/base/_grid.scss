@@ -1,0 +1,85 @@
+$column: 40px;
+$gutter: 44px;
+$grid-columns: 12;
+$max-width: 1170px;
+
+.container {
+    @include outer-container;
+}
+.flexbox{
+    @include display(flex);
+    
+    &.equal{
+      @include justify-content(space-between);
+      @include align-items(stretch);
+    }
+    
+    >[class*="col"].panel{
+        margin:10px .5em;
+
+        &:first-child{
+            margin-left: 0;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+.flexstart{
+    @include align-items(flex-start);
+}
+.center-content{
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+}
+
+.col-1{
+    .flexbox & {@include flex-basis(100%/12);}
+    @include span-columns(1);
+}
+.col-2{
+    .flexbox & {@include flex-basis(100%/6);}
+    @include span-columns(2);
+}
+.col-3{
+    .flexbox & {@include flex-basis(25%);}
+    @include span-columns(3);
+    
+}
+.col-4{
+    @include span-columns(4);
+   .flexbox & { @include flex-basis(100%/3);}
+}
+.col-5{
+    .flexbox & { @include flex-basis((100%/12)*5);}
+    @include span-columns(5);
+}
+.col-6{
+    @include span-columns(6);
+    .flexbox & {@include flex-basis(50%);}
+}
+.col-7{
+    .flexbox & { @include flex-basis((100%/12)*7);}
+    @include span-columns(7);
+}
+.col-8{
+    @include span-columns(8);
+    .flexbox & {@include flex-basis(100%/3*2);}
+}
+.col-9{
+    .flexbox & { @include flex-basis((100%/12)*9);}
+    @include span-columns(9);
+}
+.col-10{
+    .flexbox & { @include flex-basis((100%/12)*10);}
+    @include span-columns(10);
+}
+.col-11{
+    .flexbox & { @include flex-basis((100%/12)*11);}
+    @include span-columns(11);
+}
+.col-12{
+    .flexbox & {@include flex-basis(100%);}
+    @include span-columns(12);
+}

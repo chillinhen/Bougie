@@ -1,22 +1,56 @@
-.more-link{
-    font-size:1.125 * $rem-base;
-    line-height:1;
-    background:transparent url(../icons/more-infos.png) no-repeat 0 40%;
-    padding-left:1.5em;
-    float:right;
+body {
+    &.home{background: $bgColor;}
+    background: $whiteColor;
+    margin:0;
+    padding:0;
 }
+img, .responsive-img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+.invisible{
+    display:none;
+}
+.bg-white{
+    background-color: $whiteColor;
+}
+.bg-grey{
+    background-color:$lighterbgColor;
+}
+
+.more-link{
+    text-decoration: none;
+     background-image:url(../icons/more-infos-base.png);
+     color:$baseColor;
+    font-size:$rem-base * 1.125;
+    line-height:1;
+        padding-left:1.5em;
+     @include house-icon;
+    .blueAccent &{
+       
+    }
+}
+.inner-padding{
+    padding:0 $innerPadding;
+}   
+
 .quote{
     &, &  *{
         color:$quoteColor !important;
     }
 }
+
 .white-text{
-   &, &  *{
-        color:$whiteColor !important;
+    &, &  *{
+        color:$whiteColor;
     } 
+    .more-link{
+        background-image:url(../icons/more-infos-white.png); 
+    }
 }
 .gold-text{
-       &, &  *{
+    &, &  *{
         color:$goldColor !important;
     } 
 }
@@ -24,54 +58,28 @@
     @include linear-gradient(lighten($blackColor,25%), $blackColor);
 }
 .grey-gradient{
-    @include linear-gradient(lighten($blackColor,25%), $grayColor);
+    @include linear-gradient(lighten($grayColor,25%), $grayColor);
 }
-.panel{
-    padding:3em;
+.orange-gradient{
+    @include linear-gradient(lighten($orangeColor,25%), $orangeColor);
 }
-#immo-des-monats{
-    > * {
-        margin-left: calc(50% - 3em);
+
+.iframe-elastic {
+    position: relative;
+    padding-bottom: 27.5%; /* ratio width/height in % Bsp. (450 ÷ 500 = 0.9 = 90%) */
+    height: 0;
+    overflow: hidden;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
     }
 }
-.col-1{
-    //@include span-columns(1);
+.explanation{
+    color:$text-muted-color;
 }
-.col-2{
-    //@include span-columns(2);
-}
-.col-3{
-    //@include span-columns(3);
-    @include flex-basis(25%);
-}
-.col-4{
-    //@include span-columns(4);
-    @include flex-basis(33%);
-}
-.col-5{
-    //@include span-columns(5);
-}
-.col-6{
-    //@include span-columns(6);
-    @include flex-basis(50%);
-}
-.col-7{
-    //@include span-columns(7);
-}
-.col-8{
-    //@include span-columns(8);
-}
-.col-9{
-    //@include span-columns(9);
-}
-.col-10{
-    //@include span-columns(10);
-}
-.col-11{
-    //@include span-columns(11);
-}
-.col-12{
-    @include display(flex);
-    @include justify-content(space-between);
-    @include align-items(stretch);
-}
+
+

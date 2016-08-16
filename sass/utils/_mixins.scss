@@ -1,24 +1,51 @@
-
-@mixin show{
-    height:auto;
-    width: 100%;
-    overflow: auto;
-    > li {
-        display:block;
-        width: 100%;
+/*** Extends ***/
+%background-icon{
+    background:{
+        color:transparent;
+        repeat:no-repeat;
+        position: 0% 0%;
     }
 }
-@mixin hide{
-    height:0;
-    width: 0;
-    overflow: hidden;
+
+@mixin button-style{
+    background: black;
+    color: white;
+    padding: 1em;
+    width: 33%;
+    letter-spacing: .2em;
 }
+
+@mixin badge-style($size){
+    content:'';
+    display:block;
+    @include size($size);
+    background:transparent url(../images/badge-icon.png) no-repeat center center;
+    background-size:contain;
+}
+
+/*** Mixins ***/
 @mixin show-level_3{
     background: darken($baseColor,10%);
     position: absolute;
-    top:0;
-    left:100%;
-    bottom:0;
-    min-width:85%;
+    top:-3em;
+    left:0%;
+    margin-left:100%;
+    bottom:-3em;
     z-index: 10;
+    width:101%;
+    padding:3em 1em;
+}
+@mixin house-icon{
+    background:{
+        color:transparent;
+        repeat:no-repeat;
+        position: 0% 0%;
+    }
+}
+@mixin circle-quote($item) {
+    width: $item !important;
+    height: $item !important;
+    line-height: $item;
+    -webkit-border-radius: $item/2;
+    border-radius: $item/2;
 }
