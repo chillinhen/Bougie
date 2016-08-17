@@ -1,7 +1,9 @@
 /* ** COLORS ** */
-$foo: rgba (255,0,0, 1);
-
-$bgColor:#f2f0f0; //body.home BG
+$foo: rgba(235,54,24,0.5);
+.foo {
+    color:$foo !important;
+}
+$bgBody:#f2f0f0; //body.home BG
 $lighterbgColor:#fbfafa;
 
 $defaultColor: #666666;
@@ -20,19 +22,22 @@ $transparentWhite: rgba(255,255,255,0.8);
 $whiteColor: #ffffff;
 $blackColor: #000000;
 
+//ColorCodes
+
 $baseColor:$blackColor;
 
 
 /* ** NUMBERS ** */
 $defaultMargin: 20px;
-$defaultPadding: 15px;
-$sectionPadding: 6 * $defaultPadding;
-$mediumParallaxContainer: 500px;
+$defaultPadding: 2em;
+$horPadding:7.5vW;
+$vertPadding:3 * $defaultPadding;
+
+/*$mediumParallaxContainer: 500px;
 $parallaxContainer: 1180px;
-$smallParallaxContainer: 350px;
+$smallParallaxContainer: 350px;*/
 
 
 /*** HEIGHTS ***/
-$main-menu-height: 100px;
-$main-menu-height-hover: 345px;
-$innerPadding:7.5vW;
+
+

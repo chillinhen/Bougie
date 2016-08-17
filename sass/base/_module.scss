@@ -1,17 +1,23 @@
-/*** Mod ***/
+[class*="mod"]{
+    > .block{
+        body:not(.home) .page-content &{
+            @media screen and (min-width:$screen-sm){
+                padding:$defaultPadding 0;
+            }
+        }
+    }
+}
 .mod_article{
-    /*    min-height: 15vH;
-        max-height: 85vH;*/
     &.news-teaser{
-        padding-bottom: $sectionPadding;
+        /*        padding-bottom: $vertPadding;*/
     }
     &.bg-white{
-        padding:2em 0;
+        /*        padding:$defaultPadding 0;*/
     }
 }
 .mod_breadcrumb{
     font-size:$rem-base * .875;
-    padding:2em 0;
+    padding:$defaultPadding 0;
     li {
         display:inline-block;
         &:after{
@@ -30,48 +36,136 @@
         &.active a {font-weight:600;}
     }
 }
+
 /*** CE ***/
-[class*="mod"]{
-    > .block{
-        body:not(.home) .page-content &{
-            padding:2em 0;
+[class*="ce_"]{}
+.ce_text{
+    &.banner{
+        .container{
+            min-height:50vH;
+        }
+    }
+    &.bg-image{
+        position: relative;
+    }
+    &.single-item-center{
+        > .container {
+            @include display(flex);
+            @extend .single-item-center;
+        }
+    }
+    &.circle{
+        @include circle-quote(300px);
+        padding:4em;
+        &.quote{
+            position:relative;
+            &:before{
+                @include badge-style(80px);
+                position: absolute;
+                top:0;
+                right:0;
+                z-index: 999;
+            }
+        }
+    }
+    &.skew{
+        em {
+            font-style: normal;
+            color:$goldColor;
+        }
+        .textPanel{
+            margin-top:-4em;
+            &:before{
+                @include badge-style(80px);
+                margin:-$defaultPadding 0 $defaultPadding;
+            }
+            @include size(40%);
+            background: transparent url(../images/bg-skew.png) no-repeat center center / cover;
+            padding:4em;
+            p {
+                color:$lightGrayColor;
+                &:first-child{
+                    @extend %lead;
+                }
+                &:last-child{
+                    margin-bottom: 80px;/** same size/height as badge-style ***/
+                }
+            }
+
+        }
+    }
+    .text-teaser{
+        background-color: $lighterbgColor;
+        padding:0 1em 1em;
+
+        figure.float_above{
+            margin:-2em 0 2em 0;
         }
     }
 }
-
-.ce_text{
-    em {
-        font-style: normal;
-        color:$goldColor;
+/*ind. CE_Text => BG_Image ***/
+.textPanel {
+    .bg-layer & {
+        @include bg-layer($blackColor);
+        width:75vw;
+    }
+    .blueAccent &{
+        h1, h2, h3, h4, h5, h6{
+            background: $blueColor;
+            color:$whiteColor;
+            display:inline-block;
+            padding:$defaultPadding/4 $defaultPadding;
+            > span{display:block;}
+        }
+    }
+    .banner &{
+        @media screen and (max-width:$screen-xs) and (orientation:portrait){
+            @include alpha-background-color(rgba($blackColor, 0.35), white);
+            * {color:$whiteColor;}
+            .more-link{
+                background-image:url(../icons/more-infos-white.png);
+            }
+        }
+        @media screen and (max-width:$screen-sm - 1){
+            padding:$defaultPadding 0; 
+        }
+        @media screen and (min-width:$screen-sm){
+            width:50%;
+            margin:$defaultPadding 50% $defaultPadding 0;
+        }
     }
 }
-
 .ce_gallery{
-   .home &.gallery-row{
-        padding: 12.5vH 0;
+    padding: $vertPadding 0;
+    &:not(.ref-logos){
+        ul[class*="cols_"]{
+            @include outer-container(calc(100% - $horPadding));
+            li{
+                margin:0;
+            }
+            figure{
+                margin:.5em;
+                text-align:center;
+            }
+        }
+        ul.cols_4{
+            li {
+                @include span-columns(3);
+                @include omega(4n); 
+            }
+        }  
+    }
+    &.ref-logos{
         > ul {
             @include display(flex);
             @include justify-content(space-around);
             @include align-items(center);
             > li:first-child {
-                margin-left:7.5vW;
+                margin-left:$horPadding;
             }
             > li:last-child {
-                margin-right: 7.5vW;
+                margin-right: $horPadding;
             }
         }
     }
 }
-.cols_4{
-    @include outer-container(calc(1170px - 2*7.5vW));
-     li {
-            @include span-columns(3);
-            margin:0;
-            @include omega(4n);
-            figure{
-                margin:.5em;
-            }
-        }
-}
-
-

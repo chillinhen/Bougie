@@ -1,39 +1,46 @@
 $column: 40px;
 $gutter: 44px;
 $grid-columns: 12;
-$max-width: 1170px;
+$max-width: 1024px;
 
 .container {
-    @include outer-container;
+    @include outer-container;   
+    .banner & {
+        width:100%;
+    }
 }
 .flexbox{
     @include display(flex);
-    
+    @media screen and (max-width:$screen-xs){
+        @include flex-direction(column);
+        > [class*="col-"]{
+            width:100%;
+            float:none;
+            padding:1em;
+        }
+    }
+    > [class*="col-"].panel{
+        padding:1em;
+        @media screen and (max-width:$screen-xs){
+            margin:1em 0;
+        }
+        @media screen and (min-width:$screen-sm){
+            margin:0.715 * $rem-base 0.5 * $rem-base;
+
+        }
+        @media screen and (min-width:$screen-md){
+            &:first-child{
+                margin-left: 0;
+            }
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
     &.equal{
-      @include justify-content(space-between);
-      @include align-items(stretch);
-    }
-    
-    >[class*="col"].panel{
-        margin:10px .5em;
-
-        &:first-child{
-            margin-left: 0;
-        }
-        &:last-child{
-            margin-right: 0;
-        }
+        @extend .equal;
     }
 }
-.flexstart{
-    @include align-items(flex-start);
-}
-.center-content{
-    @include align-items(center);
-    @include justify-content(center);
-    @include flex-direction(column);
-}
-
 .col-1{
     .flexbox & {@include flex-basis(100%/12);}
     @include span-columns(1);
@@ -45,11 +52,11 @@ $max-width: 1170px;
 .col-3{
     .flexbox & {@include flex-basis(25%);}
     @include span-columns(3);
-    
+
 }
 .col-4{
     @include span-columns(4);
-   .flexbox & { @include flex-basis(100%/3);}
+    .flexbox & { @include flex-basis(100%/3);}
 }
 .col-5{
     .flexbox & { @include flex-basis((100%/12)*5);}
@@ -83,3 +90,4 @@ $max-width: 1170px;
     .flexbox & {@include flex-basis(100%);}
     @include span-columns(12);
 }
+

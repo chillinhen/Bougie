@@ -1,0 +1,32 @@
+.footer-data, 
+#page-header{
+    body:not(.architektur) &{
+        background: $blueColor;
+
+    }
+    body.architektur &{
+        background: $blackColor;
+
+    }  
+}
+#page-header{
+    body.home &{
+        background: $whiteColor !important; 
+    }
+    .level_1 > li > a{
+        body.home &{color:$blackColor;} 
+        body:not(.home) &{color:$whiteColor;} 
+    }
+    .level_2, .level_3{
+        a{
+            color:lighten($defaultColor,25%);
+            body.home &:hover{
+                color:$blackColor;
+            }
+            body:not(.home) &:hover{
+                color:$whiteColor;
+            }
+        }
+
+    }
+}

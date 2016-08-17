@@ -1,5 +1,3 @@
-//@import "reset.css";
-
 $base-font-size:            100% !default;
 $base-line-height:          165% !default;
 $rem-base:                  14px !default;
@@ -43,12 +41,7 @@ body {
     font-family: $body-font-family;
     font-size:$rem-base;
 }
-a{
-    .mod_navigation &,
-    #top-head &{
-        text-decoration: none;
-    }
-}
+//HEADLINES
 h1,
 h2,
 h3,
@@ -63,9 +56,6 @@ h6{
     a{
         text-decoration: none;
     }
-/*    .goldHeadline & {
-        color:$goldColor !important;
-    }*/
     .footer-data & {
         display:none;
     }
@@ -77,6 +67,20 @@ h6{
          @include house-icon;
          padding:0 1em;
          background-image:url(../icons/more-infos-gold.png);
+    }
+    .panel & {
+        @media screen and (max-device-width:$screen-xs) and (orientation:portrait){
+            font-size:15vW;
+        }
+        @media screen and (max-device-width:$screen-smallPad) and (orientation:landscape){
+            font-size:15vW;
+        }
+        @media screen and (min-device-width:$screen-md){
+            font-size:3 * $rem-base;
+        }
+    }
+    .parallax-container &{
+        @include black-headline;
     }
 }
 h1 {
@@ -103,25 +107,31 @@ h5, h6 {
     line-height: $base-line-height;
     font-weight:600;
 }
-// paragraph text
+// PARAGRAPHS
 p {
     margin: 0 0 $paragraph-margin;
     font-family: inherit;
-    font-size: $rem-base;
+    @media screen and (max-device-width:$screen-sm - 1){
+        font-size: 1.14 * $rem-base;
+    }
+    @media screen and (min-device-width:$screen-sm){
+        font-size: $rem-base;
+    }
+    
     font-weight: normal;
     line-height: $base-line-height;
     
     .ce_text &{
         @extend %clearfix;
-    }
-    .ce_text &:last-child{
-        margin-bottom: 0;
+        &:last-child{
+            margin-bottom: 0;
+        }
     }
     &.lead{
         @extend %lead;
     }
 }
-
+// LINKS
 a{
     color:$body-text-color;
     .logo &{
@@ -139,8 +149,13 @@ a{
     &.view-article:after{
         content:  " \f0da";
     }
+    .mod_navigation &,
+    #top-head &{
+        text-decoration: none;
+    }
 }
-strong{ @extend %bold;}
+
+//LISTS
 // lists
 ul,
 ol {
@@ -171,6 +186,7 @@ ol {
         }
     }
 }
+
 dl {
     margin: 0 0 $paragraph-margin;
     line-height: $base-line-height;
@@ -183,7 +199,8 @@ dt {
 dd {
     margin: 0 0 0.5rem;
 }
-// blockquotes
+//BLOCKS
+
 blockquote {
     position: relative;
     margin: 1.5rem 1em 1.5rem 3rem;
@@ -222,19 +239,8 @@ address{
         }
     }
 }
-.footer * {
-    font-size: .8rem;
-}
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-
-.text-muted { color: $text-muted-color; }
-.text-smaller {font-size: smaller;}
-
 /*** tables ****/
 table {
-    body:not(.impressum){width:100%;}
     
     margin-bottom:2em;
     th{
@@ -242,6 +248,22 @@ table {
         @extend %bold;
     }
     tr:nth-child(even) td {
-        background-color: lighten($baseColor,10%);
+        background-color: lighten($defaultColor,10%);
     }
+}
+// INLINES
+strong{ @extend %bold;}
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-muted { color: $text-muted-color; }
+.text-smaller {font-size: smaller;}
+.uppercase{
+    text-transform:uppercase;
+}
+
+//LAYOUT/EXTRAS
+.footer * {
+    font-size: .8rem;
 }

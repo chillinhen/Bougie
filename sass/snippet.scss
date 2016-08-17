@@ -1,45 +1,228 @@
-/*** Kontakt ***/
-input[type="text"],input[type="number"],input[type="mail"], textarea{
-    padding: .7em 1.4em;
-    font-size: $rem-base;
-    width:100%;
-}
-
-.widget-text, .widget-textarea{
-    input, textarea{
-        border:1px solid $grayColor;
+.responsive-logo{
+    @media screen and (max-width:$screen-md){
+        padding:.5em 1em; 
     }
-    
-}
-
-.widget-text{
-    .mod_form.newsletter & {
-        border:{
-            width:1px 1px 1px 0;
-            style:solid;
-            color:rgba(0,0,0,.1) rgba(0,0,0,.25) rgba(0,0,0,.25) transparent;
-        }
-        -webkit-box-shadow: 2px 2px 0 0 rgba(0,0,0,.25);
-        box-shadow: 2px 2px 0 0 rgba(0,0,0,.25);
-        input[type="text"], input[type="submit"]{
-            border:0;
-        }
-        input[type="text"]{
-            min-width:330px;
-        }
-        input[type="submit"]{
-            background: transparent url(../icons/icon-submit.png) no-repeat center center; 
-            text-indent:-999999px;
-            float: right;
-        }
-        + .widget-explanation{
-        margin-top: 1em;
-        > p {
-            font-size: $rem-base;
-            line-height: 1.2;
-        }
-        }
+    @media screen and (min-width:$screen-md){
+        display:none; 
     }
 
-    
 }
+.nav-responsive{
+    @media screen and (max-width:$screen-md){
+        width:30px;
+        display:block;
+        margin-right:1em;
+        > span{
+            display:block;
+            background: $whiteColor;
+            height:3px;
+            margin-bottom: 6px;
+        } 
+    }
+}
+#page-header{
+    &.sticky{
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:99;
+
+        #top-head{
+            @media screen and (min-width:$screen-md){
+                height:0;
+                overflow:hidden;
+            }
+        }
+    }
+}
+
+.foo{background:red;}
+#navigation {
+    @include outer-container;
+    position: relative;
+    @media screen and (max-width:$screen-md){
+        @include transition(all 300ms ease-in);
+        height:0;
+        padding-left:1em;
+        padding-right:1em;
+        overflow:hidden;
+        &.show{
+            @include transition(all 300ms ease-out);
+            padding-top:1em;
+            padding-bottom:1em;
+            height:auto;
+        }
+    }
+    @media screen and (min-width:$screen-md){
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(space-between);
+        height:100%;
+        padding:3em 0;
+        .sticky & {
+            @include transition(all 500ms ease-in);
+            padding:1em 0;
+        }
+    }
+    &:hover{
+        @include align-items(flex-end);
+        cursor: pointer;
+        #main-nav {
+            .level_2{
+                display:block;
+            }
+        }
+    }
+}
+.nav-wrapper{
+    @media screen and (min-width:$screen-md){
+        @include flex-basis(60%);
+        @include display(flex);
+        @include justify-content(space-between);
+        > .mod_navigation{
+            @include flex(2);
+        } 
+    }
+
+}
+.logo{
+    @media screen and (max-width:$screen-md){
+        display:none;
+    }
+    @media screen and (min-width:$screen-md){
+        @include flex-basis(20%);
+    }
+
+}
+
+#main-nav {
+    #page-header &{
+        text-transform:uppercase;
+        li {
+            @media screen and (max-width:$screen-md){
+                display:block;
+
+                > span,
+                > a{
+                    display:block;
+                    padding:1em 0;
+                    border-bottom:1px solid white;
+                }
+                &:last-child{
+                    a, span{
+                        border:0;
+                    }
+                }
+            }
+
+        }
+        .level_1{
+            width: 100%;
+            @media screen and (max-width:$screen-md){
+                margin-bottom:1em;
+            }
+            @media screen and (min-width:$screen-md){
+                @include display(flex);
+                > li {
+                    @include flex-basis(100%/3);
+                    position:relative;
+                    padding: 0 3em;
+                    border-right:1px solid lighten($darkGrayColor,25%);
+                    &:last-child{
+                        border:0;
+                    }
+
+                }
+                .level_2{
+                    display:none;
+
+                    > li{
+                        &:hover{
+                            @media screen and (min-width:$screen-md){
+                                width:200%;
+                                display:block;
+                                .level_3{
+                                    display:block;
+                                    @include show-level_3;
+                                }
+                            }
+                        }
+                    }
+                }
+                .level_3{
+                    display:none;
+                }
+            } 
+            li:hover, li:focus{
+                .level_2{
+                    height:auto;
+                    @include transition(all 2s ease-out);
+                    overflow: no-content;
+                }
+            }
+        }
+        .level_2, .level_3{
+            a{
+                color:lighten($darkGrayColor,50%); 
+                &:hover{
+                    color:$whiteColor;
+                }
+            }
+
+        }
+        .level_2{
+            @media screen and (max-width:$screen-md){
+                height:0;
+                overflow:hidden;
+            }
+        }
+    }
+
+}
+
+
+.sitemap-footer{
+    padding:$vertPadding $horPadding;
+    background: $whiteColor;
+    ul.level_1{
+        padding-right:$horPadding;
+        @include display(flex);
+        @include justify-content(space-between);
+        @include align-items(flex-start);
+
+        > li.submenu > a,
+        > li.submenu > span{
+            @extend %footerHeaderstyle;
+        }
+    }
+    hr {
+        margin-bottom: 2em;
+    }
+}
+.social-media {
+
+    li {
+        display:inline-block;
+        margin-right:.8em;
+        a{
+            &:before{
+                content:' ';
+                @include size(30px);
+                display:inline-block;
+                @extend %background-icon;
+            }
+            > span {display:none;}
+        }
+        .facebook:before{
+            background-image:url(../icons/facebook-grey.png);
+        }
+        .google-plus:before{
+            background-image:url(../icons/google-plus-grey.png);
+        }
+        .you-tube:before{
+            background-image:url(../icons/you-tube-grey.png);
+        }
+    }
+}
+

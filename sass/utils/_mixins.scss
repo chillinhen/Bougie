@@ -6,7 +6,35 @@
         position: 0% 0%;
     }
 }
+@mixin bg-layer($col) {
+    @include alpha-background-color(rgba($col, 0.5), white);
+    color:lighten($col,100%);
+    padding:$defaultPadding/2 $defaultPadding;
+    margin:{
+        left:auto;
+        right:auto;
+    };
+    @extend %lead;
+}
+@mixin black-headline{
+    background: $blackColor;
+    color:$goldColor;
+    padding:.5em;
+    margin:0 10vW $defaultPadding/2 10vW;
 
+    em {
+        color:$whiteColor !important;
+        @extend %lead;
+        padding-top: .5em;
+        display:block;
+        font-style: normal;
+    }
+}
+
+
+
+
+/*** Mixins ***/
 @mixin button-style{
     background: black;
     color: white;

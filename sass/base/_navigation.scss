@@ -1,3 +1,25 @@
+.responsive-logo{
+    @media screen and (max-width:$screen-md){
+        padding:.5em 1em; 
+    }
+    @media screen and (min-width:$screen-md){
+        display:none; 
+    }
+
+}
+.nav-responsive{
+    @media screen and (max-width:$screen-md){
+        width:30px;
+        display:block;
+        margin-right:1em;
+        > span{
+            display:block;
+            background: $whiteColor;
+            height:3px;
+            margin-bottom: 6px;
+        } 
+    }
+}
 #page-header{
     background:$baseColor;
     *{color:white;} 
@@ -6,97 +28,156 @@
         top:0;
         left:0;
         right:0;
-        z-index:99999;
-        
+        z-index:99;
+
         #top-head{
-            height:0;
-            overflow:hidden;
+            @media screen and (min-width:$screen-md){
+                height:0;
+                overflow:hidden;
+            }
         }
     }
 }
+.nav-wrapper{
+    @media screen and (min-width:$screen-md){
+        @include flex-basis(60%);
+        @include display(flex);
+        @include justify-content(space-between);
+        > .mod_navigation{
+            @include flex(2);
+        } 
+    }
 
-#navigation.container {
-        @include outer-container;
-        position: relative;
-        height:100%;
-        padding:3em 0;
-        .sticky & {
-               @include transition(all 500ms ease-in);
-               padding:1em 0;
+}
+.logo{
+    @media screen and (max-width:$screen-md){
+        display:none;
+    }
+    @media screen and (min-width:$screen-md){
+        @include flex-basis(20%);
+    }
+
+}
+
+#navigation {
+    @include outer-container;
+    position: relative;
+    @media screen and (max-width:$screen-md){
+        @include transition(all 300ms ease-in);
+        height:0;
+        padding-left:1em;
+        padding-right:1em;
+        overflow:hidden;
+        &.show{
+            @include transition(all 300ms ease-out);
+            padding-top:1em;
+            padding-bottom:1em;
+            height:auto;
         }
+    }
+    @media screen and (min-width:$screen-md){
         @include display(flex);
         @include align-items(center);
         @include justify-content(space-between);
-        .nav-wrapper{
-            @include flex-basis(60%);
-            @include display(flex);
-            @include justify-content(space-between);
-            
-            > .mod_navigation{
-                @include flex(2);
-            }
+        height:100%;
+        padding:3em 0;
+        .sticky & {
+            @include transition(all 500ms ease-in);
+            padding:1em 0;
         }
-        .logo{
-             @include flex-basis(20%);
-        }
-        #main-nav {
-            text-transform:uppercase;
-            .level_1{
-                width: 100%;
-                @include display(flex);
-               
-                > li {
-                    @include flex-basis(100%/3);
-                    position:relative;
-                    padding: 0 3em;
-                    border-right:1px solid lighten($darkGrayColor,25%);
-                    &:last-child{
-                        border:0;
-                    }
-                    
-                }
-            }
-            .level_2, .level_3{
-                a{
-                   color:lighten($darkGrayColor,50%); 
-                   &:hover{
-                       color:$whiteColor;
-                   }
-                }
-            }
-            .level_2{
-                display:none;
-                
-                > li{
-                    &:hover{
-                        width:200%;
-                        display:block;
-                        .level_3{
-                            display:block;
-                            @include show-level_3;
-                        }
-                    }
-                }
-            }
-            .level_3{
-                display:none;
-            }
-        }
+        ul.level_2{display:none;}
         &:hover{
             @include align-items(flex-end);
             cursor: pointer;
-                #main-nav {
+            #main-nav {
                 .level_2{
                     display:block;
                 }
             }
         }
     }
+}
+
+
+#main-nav {
+    #page-header & {
+        @extend .uppercase;
+        li {
+            @media screen and (max-width:$screen-md){
+                display:block;
+
+                > span,
+                > a{
+                    display:block;
+                    padding:1em 0;
+                    border-bottom:1px solid white;
+                }
+                &:last-child{
+                    a, span{
+                        border:0;
+                    }
+                }
+            }
+        }
+        .level_1{
+            width: 100%;
+            @media screen and (max-width:$screen-md){
+                margin-bottom:1em;
+                .level_2{
+                    @media screen and (max-width:$screen-md){
+                        height:0;
+                        overflow:hidden;
+                    }
+                }
+                li:hover, li:focus{
+                .level_2{
+                    height:auto;
+                    @include transition(all 2s ease-out);
+                    overflow: no-content;
+                }
+            }
+            }
+            @media screen and (min-width:$screen-md){
+                @include display(flex);
+                > li {
+                   @include flex-basis(100%/3); 
+                   position:relative;
+                    padding: 0 3em;
+                    border-right:1px solid lighten($darkGrayColor,25%);
+                    &:last-child{
+                        border:0;
+                    }
+                }
+                .level_2{
+                     > li{
+                        &:hover{
+                            @media screen and (min-width:$screen-md){
+                                width:200%;
+                                display:block;
+                                .level_3{
+                                    display:block;
+                                    @include show-level_3;
+                                }
+                            }
+                        }
+                    }
+                }
+                .level_3{
+                    display:none;
+                }
+            }
+            
+        }
+
+    }
+}
+
+
 .sitemap-footer{
-    padding:$sectionPadding $innerPadding;
+    padding:$vertPadding $horPadding;
     background: $whiteColor;
     ul.level_1{
-        padding-right:$innerPadding;
+        padding-right:$horPadding;
         @include display(flex);
         @include justify-content(space-between);
         @include align-items(flex-start);

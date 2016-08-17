@@ -1,58 +1,34 @@
-body {
-    &.home{background: $bgColor;}
-    background: $whiteColor;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    @include selection(true) {
+        background-color:$orangeColor;
+        color:lighten($orangeColor,100%);
+    }
 }
+
 img, .responsive-img {
     max-width: 100%;
     width: auto;
     height: auto;
 }
-.invisible{
+
+.invisible, .no-mobile{
     display:none;
 }
+
+//Backgrounds & gradients
 .bg-white{
     background-color: $whiteColor;
+}
+.bg-body{
+    background-color:$bgBody; 
 }
 .bg-grey{
     background-color:$lighterbgColor;
 }
-
-.more-link{
-    text-decoration: none;
-     background-image:url(../icons/more-infos-base.png);
-     color:$baseColor;
-    font-size:$rem-base * 1.125;
-    line-height:1;
-        padding-left:1.5em;
-     @include house-icon;
-    .blueAccent &{
-       
-    }
-}
-.inner-padding{
-    padding:0 $innerPadding;
-}   
-
-.quote{
-    &, &  *{
-        color:$quoteColor !important;
-    }
-}
-
-.white-text{
-    &, &  *{
-        color:$whiteColor;
-    } 
-    .more-link{
-        background-image:url(../icons/more-infos-white.png); 
-    }
-}
-.gold-text{
-    &, &  *{
-        color:$goldColor !important;
-    } 
+.bg-black{
+    background: $blackColor;
+    > * {color:$lightGrayColor;}
 }
 .dark-gradient{
     @include linear-gradient(lighten($blackColor,25%), $blackColor);
@@ -64,6 +40,134 @@ img, .responsive-img {
     @include linear-gradient(lighten($orangeColor,25%), $orangeColor);
 }
 
+//Individual Text Colors
+.white-text{
+    &, &  *{
+        color:$whiteColor;
+    }
+    a.more-link{color:$whiteColor;}
+}
+.gold-text{
+    &, &  *{
+        color:$goldColor !important;
+    } 
+}
+
+
+//Paddings/Margins
+.inner-padding{
+    padding:0 $horPadding;
+}
+
+//Heights/Widths
+.fullHeight{
+    height:100vH;
+}
+// Resources
+.claim {
+    #top-head & {
+        > p{
+            font-size:2 * $rem-base;
+            margin-right:5em;
+            padding-right:2em;
+            color:$defaultColor;
+            background:transparent url('../icons/logo-small.png') no-repeat center right;
+        }
+    }
+
+}
+/*** Contact-data***/
+.phone, .mail, .hours {
+    #page-footer &{
+        text-align:center;
+        p:first-child:before{
+            content:' ';
+            @include size(66px);
+            margin:0 auto 2.5em;
+            @extend %background-icon;
+        }
+    }
+}
+.phone, .mail{
+    #top-head & {
+        > p:first-child{
+            display:none;
+        }
+        a {
+            display:block;
+
+            padding:.5em 2em .5em 3.3em;
+            margin:.5em 0 .5em 2em;
+            @extend %background-icon;
+            background-size: 30px 30px;
+            @media screen and (max-width:$screen-xs) and (orientation:portrait){
+                > span {display: none;}
+            }
+            @media screen and (max-width:$screen-xs) and (orientation:landscape){
+                background-image:none !important;
+            }
+            @media screen and (max-width:$screen-smallPad){
+                padding:1em;
+            }
+
+        }
+    }
+}
+.phone{
+    #top-head & {
+        background-color:lighten($darkGrayColor,15%);
+        a{
+            background-image:url(../icons/phone-white.png);
+        }
+    }
+    #page-footer & {
+        text-align:center;
+        p:first-child:before{
+            background-image:url(../icons/phone-white.png);
+        }
+    }
+
+
+}
+.mail{
+    #top-head & {
+        a{
+            background-image:url(../icons/mail-white.png);
+        }
+    }
+    #page-footer & {
+        text-align:center;
+        p:first-child:before{
+            background-image:url(../icons/mail-white.png);
+        }
+    }
+}
+.hours{
+    #page-footer & {
+        text-align:center;
+        p:first-child:before{
+            background-image:url(../icons/hours-white.png);
+        }
+    }
+}
+
+/** Javascript generated Classes ***/
+.more-link{
+    text-decoration: none;
+    background-image:url(../icons/more-infos-base.png);
+    color:$baseColor;
+    font-size:$rem-base * 1.125;
+    line-height:1;
+    padding-left:1.5em;
+    @include house-icon;
+    .white-text &{
+        background-image:url(../icons/more-infos-white.png); 
+    }
+    .gold-text &{
+        background-image:url(../icons/more-infos-gold.png); 
+    }
+}
+// Google Map
 .iframe-elastic {
     position: relative;
     padding-bottom: 27.5%; /* ratio width/height in % Bsp. (450 ÷ 500 = 0.9 = 90%) */
@@ -78,8 +182,26 @@ img, .responsive-img {
         pointer-events: none;
     }
 }
-.explanation{
-    color:$text-muted-color;
+
+.flexstart{
+    @include align-items(flex-start);
 }
 
-
+.center-content{
+    > .container{
+        @include display(flex);
+        @extend .multi-items-center;
+    }
+}
+.multi-items-center{
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+}
+.single-item-center{
+    @include align-items(center);
+}
+.equal{
+    @include justify-content(space-between);
+    @include align-items(stretch);
+}
