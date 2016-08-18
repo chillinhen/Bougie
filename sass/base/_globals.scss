@@ -11,6 +11,9 @@ img, .responsive-img {
     width: auto;
     height: auto;
 }
+figure{
+    margin:0;
+}
 
 .invisible, .no-mobile{
     display:none;
@@ -51,6 +54,16 @@ img, .responsive-img {
     &, &  *{
         color:$goldColor !important;
     } 
+}
+
+.blueAccent{
+    h1, h2, h3, h4, h5, h6{
+        background: $blueColor;
+        color:$whiteColor;
+        display:inline-block;
+        padding:$defaultPadding/4 $defaultPadding;
+        > span{display:block;}
+    }
 }
 
 

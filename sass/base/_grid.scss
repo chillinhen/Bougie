@@ -4,31 +4,40 @@ $grid-columns: 12;
 $max-width: 1024px;
 
 .container {
-    @include outer-container;   
-    .banner & {
-        width:100%;
+    @include outer-container;
+
+    .page-content .mod_article > &,
+    .footer-data > &
+    .sitemap-footer  > &{
+        padding:$defaultPadding;
     }
+
+    body:not(.home) .mod_article > &{
+        padding-top:$vertPadding;
+        padding-bottom:$vertPadding;
+    }
+
 }
 .flexbox{
     @include display(flex);
-    @media screen and (max-width:$screen-xs){
+    .col-1 &,
+    .col-2 &,
+    .col-3 &,
+    .col-4 &,
+    .col-5 &,
+    .col-6 &{
         @include flex-direction(column);
-        > [class*="col-"]{
-            width:100%;
-            float:none;
-            padding:1em;
-        }
     }
     > [class*="col-"].panel{
         padding:1em;
-        @media screen and (max-width:$screen-xs){
+        @media screen and (max-width:$screen-smallPad){
             margin:1em 0;
         }
-        @media screen and (min-width:$screen-sm){
+        @media screen and (min-width:$screen-smallPad){
             margin:0.715 * $rem-base 0.5 * $rem-base;
 
         }
-        @media screen and (min-width:$screen-md){
+        @media screen and (min-width:$screen-sm){
             &:first-child{
                 margin-left: 0;
             }
@@ -40,54 +49,55 @@ $max-width: 1024px;
     &.equal{
         @extend .equal;
     }
-}
-.col-1{
-    .flexbox & {@include flex-basis(100%/12);}
-    @include span-columns(1);
-}
-.col-2{
-    .flexbox & {@include flex-basis(100%/6);}
-    @include span-columns(2);
-}
-.col-3{
-    .flexbox & {@include flex-basis(25%);}
-    @include span-columns(3);
+    @media screen and (max-width:$screen-smallPad + 1){
+        @include flex-direction(column);
+        > [class*="col-"]{
+            width:100%;
+            float:none;
+            padding:1em;
+        }
+    }
+    @media screen and (min-width:$screen-sm){
+        .col-1{
+            @include flex-basis(100%/12);
+        }
+        .col-2{
+           @include flex-basis(100%/6);
+        }
+        .col-3{
+          @include flex-basis(25%);
+
+        }
+        .col-4{
+           @include flex-basis(100%/3);
+        }
+        .col-5{
+           @include flex-basis((100%/12)*5);
+        }
+        .col-6{
+            @include flex-basis(50%);
+        }
+        .col-7{
+          @include flex-basis((100%/12)*7);
+        }
+        .col-8{
+            @include flex-basis(100%/3*2);
+        }
+        .col-9{
+           @include flex-basis((100%/12)*9);
+        }
+        .col-10{
+            @include flex-basis((100%/12)*10);
+        }
+        .col-11{
+           @include flex-basis((100%/12)*11);
+        }
+        .col-12{
+           @include flex-basis(100%);
+        }
+    }
 
 }
-.col-4{
-    @include span-columns(4);
-    .flexbox & { @include flex-basis(100%/3);}
-}
-.col-5{
-    .flexbox & { @include flex-basis((100%/12)*5);}
-    @include span-columns(5);
-}
-.col-6{
-    @include span-columns(6);
-    .flexbox & {@include flex-basis(50%);}
-}
-.col-7{
-    .flexbox & { @include flex-basis((100%/12)*7);}
-    @include span-columns(7);
-}
-.col-8{
-    @include span-columns(8);
-    .flexbox & {@include flex-basis(100%/3*2);}
-}
-.col-9{
-    .flexbox & { @include flex-basis((100%/12)*9);}
-    @include span-columns(9);
-}
-.col-10{
-    .flexbox & { @include flex-basis((100%/12)*10);}
-    @include span-columns(10);
-}
-.col-11{
-    .flexbox & { @include flex-basis((100%/12)*11);}
-    @include span-columns(11);
-}
-.col-12{
-    .flexbox & {@include flex-basis(100%);}
-    @include span-columns(12);
-}
+
+
 

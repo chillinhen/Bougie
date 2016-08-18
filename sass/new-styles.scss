@@ -7,9 +7,10 @@
 @import "utils/_variables";
 @import "utils/_mixins";
 
+@import "base/_globals";
 @import "base/_typographie";
 @import "base/_color-scheme";
-@import "base/_globals";
+
 @import "base/_navigation";
 @import "base/_module";
 @import "base/_forms";

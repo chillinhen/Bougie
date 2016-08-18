@@ -1,8 +1,5 @@
 /* ** COLORS ** */
 $foo: rgba(235,54,24,0.5);
-.foo {
-    color:$foo !important;
-}
 $bgBody:#f2f0f0; //body.home BG
 $lighterbgColor:#fbfafa;
 
@@ -24,7 +21,7 @@ $blackColor: #000000;
 
 //ColorCodes
 
-$baseColor:$blackColor;
+$baseColor:$blueColor;
 
 
 /* ** NUMBERS ** */
@@ -33,11 +30,19 @@ $defaultPadding: 2em;
 $horPadding:7.5vW;
 $vertPadding:3 * $defaultPadding;
 
-/*$mediumParallaxContainer: 500px;
-$parallaxContainer: 1180px;
-$smallParallaxContainer: 350px;*/
 
+/*** Typo ***/
+$base-font-size:            100% !default;
+$base-line-height:          165% !default;
+$rem-base:                  14px !default;
 
-/*** HEIGHTS ***/
+$paragraph-margin:          1.5rem;
+
+$headings-font-family:    "Open Sans", sans-serif !default;
+$body-font-family:        "Open Sans", sans-serif !default;
+
+$heading-text-color:        $goldColor;
+$body-text-color:           $defaultColor;
+$text-muted-color:          lighten($defaultColor,25%);
 
 

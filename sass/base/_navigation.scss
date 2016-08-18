@@ -28,7 +28,7 @@
         top:0;
         left:0;
         right:0;
-        z-index:99;
+        z-index:999999;
 
         #top-head{
             @media screen and (min-width:$screen-md){
@@ -50,13 +50,21 @@
 
 }
 .logo{
+    a{
+        @extend %text-indent;
+        display:block;
+        &:hover{cursor:pointer;}
+    }
+
     @media screen and (max-width:$screen-md){
         display:none;
     }
     @media screen and (min-width:$screen-md){
         @include flex-basis(20%);
+        height: 40px;
+        width:100%;
+        background:$foo;
     }
-
 }
 
 #navigation {
@@ -84,6 +92,10 @@
         .sticky & {
             @include transition(all 500ms ease-in);
             padding:1em 0;
+            &:hover{
+                @include transition(all 500ms ease-in);
+                padding:3em 0; 
+            }
         }
         ul.level_2{display:none;}
         &:hover{
@@ -97,7 +109,6 @@
         }
     }
 }
-
 
 #main-nav {
     #page-header & {
@@ -130,18 +141,18 @@
                     }
                 }
                 li:hover, li:focus{
-                .level_2{
-                    height:auto;
-                    @include transition(all 2s ease-out);
-                    overflow: no-content;
+                    .level_2{
+                        height:auto;
+                        @include transition(all 2s ease-out);
+                        overflow: no-content;
+                    }
                 }
-            }
             }
             @media screen and (min-width:$screen-md){
                 @include display(flex);
                 > li {
-                   @include flex-basis(100%/3); 
-                   position:relative;
+                    @include flex-basis(100%/3); 
+                    position:relative;
                     padding: 0 3em;
                     border-right:1px solid lighten($darkGrayColor,25%);
                     &:last-child{
@@ -149,7 +160,7 @@
                     }
                 }
                 .level_2{
-                     > li{
+                    > li{
                         &:hover{
                             @media screen and (min-width:$screen-md){
                                 width:200%;
@@ -166,26 +177,51 @@
                     display:none;
                 }
             }
-            
+
         }
 
     }
 }
 
-
 .sitemap-footer{
-    padding:$vertPadding $horPadding;
     background: $whiteColor;
-    ul.level_1{
-        padding-right:$horPadding;
-        @include display(flex);
-        @include justify-content(space-between);
-        @include align-items(flex-start);
+    @media screen and (max-width:$screen-sm){
+        [class*="col"]{
+            width:100%;
+        }
+        h3{
+            margin-top:$defaultPadding;
+        }
+    }
+    @media screen and (min-width:$screen-sm){
+        padding:$vertPadding $horPadding; 
+    }
 
+    ul.level_1{
         > li.submenu > a,
         > li.submenu > span{
             @extend %footerHeaderstyle;
         }
+        @media screen and (min-width:$screen-sm){
+            padding-right:$horPadding;
+            @include display(flex);
+            @include justify-content(space-between);
+            @include align-items(flex-start); 
+        }
+        @media screen and (max-width:$screen-sm - 1){
+            > li.submenu > a,
+            > li.submenu > span{
+
+                padding-top:$defaultPadding/2;
+                margin-top:$defaultPadding/2;
+                border-top:1px solid $defaultColor;
+            }
+            > li.submenu:first-child > a,
+                > li.submenu:first-child > span{
+                border:0; 
+            }
+        }
+
     }
     hr {
         margin-bottom: 2em;

@@ -14,6 +14,9 @@ textarea{
         border:1px solid $grayColor; 
     }   
 }
+.submit_container{
+    width:100%;
+}
 input[type="submit"]{
     &.button{
         @include button-style;
@@ -22,10 +25,16 @@ input[type="submit"]{
 .rueckruf{
     @include outer-container(70%);
     .row {
-        @extend %clearfix;
+        @extend .flexbox;
+        @extend .equal;
         margin:1.5em 0;
         .widget-text{
-            @include span-columns(4);
+            @include flex-basis(30%);
+            margin:0 1.5%;
+        }
+        .widget-textarea{
+          @include flex-basis(100%); 
+          margin:0 1.5%;
         }
     }
 }
@@ -55,9 +64,6 @@ input[type="submit"]{
             background: transparent url(../icons/icon-submit.png) no-repeat center center; 
             text-indent:-999999px;
             float: right;
-        }
-        input[type="text"]{
-            min-width:330px;
         }
     }
 }

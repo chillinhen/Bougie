@@ -51,7 +51,13 @@ body {
         border-left:1px solid $whiteColor;
         padding:1.4em 0;
         strong {
-            font-size:2.15 * $rem-base;
+            @media screen and (max-width:$screen-md - 1){
+                font-size:1.75 * $rem-base;  
+            }
+            @media screen and (min-width:$screen-md){
+              font-size:2.15 * $rem-base;  
+            }
+            
             font-weight: 300;
         }
         &:first-child{

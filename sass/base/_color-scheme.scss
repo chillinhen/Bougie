@@ -13,12 +13,20 @@
     body.home &{
         background: $whiteColor !important; 
     }
+    .logo {
+        body.home &{
+            background:transparent url(../images/Logo.png) no-repeat center right / contain
+        } 
+        body:not(.home) &{
+            background:transparent url(../images/Logo-white.png) no-repeat center right / contain
+        } 
+    }
     .level_1 > li > a{
         body.home &{color:$blackColor;} 
         body:not(.home) &{color:$whiteColor;} 
     }
-    .level_2, .level_3{
-        a{
+    .level_2 > li{
+        > a{
             color:lighten($defaultColor,25%);
             body.home &:hover{
                 color:$blackColor;
@@ -29,4 +37,23 @@
         }
 
     }
-}
+    .level_3 > li{
+        > a{
+            color:lighten($defaultColor,25%);
+            &:hover{
+                color:$whiteColor;
+            }
+        }
+
+    }
+    .level_3{
+        body.home &,
+        body.architektur &{
+            background-color:lighten($blackColor,10%);
+        }
+        body.immobilien &{
+            background-color:darken($blueColor,10%);
+        }
+            
+        }
+    }

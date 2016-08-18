@@ -1,11 +1,11 @@
 [class*="mod"]{
-    > .block{
+/*    > .block{
         body:not(.home) .page-content &{
             @media screen and (min-width:$screen-sm){
                 padding:$defaultPadding 0;
             }
         }
-    }
+    }*/
 }
 .mod_article{
     &.news-teaser{
@@ -37,9 +37,33 @@
     }
 }
 
+.mod_newslist{
+    .panel {
+        @extend .bg-white;
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(space-between);
+        .contentPanel{
+            @include flex(2);
+            margin: $defaultPadding/2 0;
+            
+        }
+        p.more {
+            a{
+                @extend .more-link;
+            }
+        }
+        
+        &:first-child{
+            @extend .orange-gradient;
+            @extend .white-text;
+        }
+    }
+}
+
 /*** CE ***/
 [class*="ce_"]{}
-.ce_text{
+[class*="ce_"]{
     &.banner{
         .container{
             min-height:50vH;
@@ -74,7 +98,7 @@
             color:$goldColor;
         }
         .textPanel{
-            margin-top:-4em;
+
             &:before{
                 @include badge-style(80px);
                 margin:-$defaultPadding 0 $defaultPadding;
@@ -94,29 +118,25 @@
 
         }
     }
-    .text-teaser{
+    &.text-teaser{
         background-color: $lighterbgColor;
-        padding:0 1em 1em;
+        padding:0 $defaultPadding/2 $defaultPadding/2;
+        margin:0 $defaultPadding/2;
+        overflow:hidden;
 
-        figure.float_above{
-            margin:-2em 0 2em 0;
+        figure{
+            &.float_above{
+            margin:-$defaultPadding/2 0 $defaultPadding/2 0;
+        }
         }
     }
 }
 /*ind. CE_Text => BG_Image ***/
 .textPanel {
+
     .bg-layer & {
         @include bg-layer($blackColor);
         width:75vw;
-    }
-    .blueAccent &{
-        h1, h2, h3, h4, h5, h6{
-            background: $blueColor;
-            color:$whiteColor;
-            display:inline-block;
-            padding:$defaultPadding/4 $defaultPadding;
-            > span{display:block;}
-        }
     }
     .banner &{
         @media screen and (max-width:$screen-xs) and (orientation:portrait){
@@ -126,9 +146,12 @@
                 background-image:url(../icons/more-infos-white.png);
             }
         }
-        @media screen and (max-width:$screen-sm - 1){
-            padding:$defaultPadding 0; 
+        @media screen and (max-width:$screen-sm){
+            padding:$defaultPadding; 
         }
+
+    }
+    .half-width & {
         @media screen and (min-width:$screen-sm){
             width:50%;
             margin:$defaultPadding 50% $defaultPadding 0;
@@ -136,36 +159,54 @@
     }
 }
 .ce_gallery{
-    padding: $vertPadding 0;
+    
     &:not(.ref-logos){
+        @media screen and (min-width:$screen-sm){
+          padding: $vertPadding $horPadding;  
+        }
+        
         ul[class*="cols_"]{
-            @include outer-container(calc(100% - $horPadding));
             li{
                 margin:0;
             }
             figure{
-                margin:.5em;
                 text-align:center;
             }
         }
         ul.cols_4{
+            @include display(flex);
+            @include flex-wrap(wrap);
             li {
-                @include span-columns(3);
-                @include omega(4n); 
+                @media screen and (max-width:$screen-xs){
+                    @include flex-basis(100%);
+                }
+                @media screen and (min-width:$screen-xs) and (max-width:$screen-sm - 1){
+                    @include flex-basis(50%);
+                }
+                @media screen and (min-width:$screen-sm) and (max-width:$screen-lg - 1) {
+                    @include flex-basis(33%);
+                }
+                @media screen and (min-width:$screen-lg){
+                    @include flex-basis(25%);
+                }
+                line-height:0;
+                &:last-child{
+                    @include flex-grow(0);
+                    @include flex-shrink(0);
+                }
+                figure{
+                    margin:$defaultPadding/4;
+                }
             }
         }  
     }
     &.ref-logos{
+        padding: $vertPadding $horPadding;
         > ul {
             @include display(flex);
             @include justify-content(space-around);
             @include align-items(center);
-            > li:first-child {
-                margin-left:$horPadding;
-            }
-            > li:last-child {
-                margin-right: $horPadding;
-            }
+            @include flex-wrap(nowrap);
         }
     }
 }
