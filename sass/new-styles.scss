@@ -6,6 +6,7 @@
 
 @import "utils/_variables";
 @import "utils/_mixins";
+@import "base/_grid";
 
 @import "base/_globals";
 @import "base/_typographie";
@@ -15,9 +16,8 @@
 @import "base/_module";
 @import "base/_forms";
 
-@import "base/_grid";
-@import "base/_layout";
 
+@import "base/_layout";
 @import "base/_extras";
 //@import "_shame";
 

@@ -30,7 +30,7 @@
                     e.preventDefault();
                     $(this).siblings('.level_2').addClass('show');
                     //insert things you want to do when single tapped
-                }, 300);   //wait 300ms then run single click code
+                }, 100);   //wait 100ms then run single click code
             } else {    //tapped within 300ms of last tap. double tap
                 clearTimeout(tapped); //stop single tap callback
                 window.location.href = $(this).attr('href');
@@ -51,8 +51,8 @@
                     }
                 };
 
-                stickyNav();
-                $(window).scroll(stickyNav);
+                //stickyNav();
+                //$(window).scroll(stickyNav);
 
         // responsive
         $(window).bind("resize", resizeWindow);

@@ -1,6 +1,7 @@
 %lead{
    font-size: $rem-base * 1.4;
    line-height: 1.5;
+   margin:$defaultPadding 0;
 }
 %bold{font-weight: 600;};
 %unstyled-list{
@@ -70,20 +71,35 @@ h6{
             font-size:3 * $rem-base;
         }
     }
-    .parallax-container &{
+    .black-headline &{
         @include black-headline;
+    }
+    .bg-layer & {
+        color:$whiteColor !important;
     }
 }
 h1 {
     font-size:4.3 * $rem-base;
     line-height: 1.16;
     font-weight:300;
+    &.logo{
+        margin:0;
+    }
+    
 }
-
 h2 {
     font-size:3 * $rem-base;
     line-height: 1;
     font-weight:300;
+}
+
+h1, h2 {
+    .bg-layer &{
+       font-size:2.15 * $rem-base; 
+    }
+        + p{
+        @extend %lead;
+    }
 }
 
 h3, h4 {
@@ -117,9 +133,6 @@ p {
         &:last-of-type{
             margin-bottom: 0;
         }
-    }
-    &.lead{
-        @extend %lead;
     }
 }
 // LINKS
@@ -243,6 +256,9 @@ table {
     }
 }
 // INLINES
+.lead{
+        @extend %lead;
+    }
 strong{ @extend %bold;}
 .text-left { text-align: left; }
 .text-center { text-align: center; }

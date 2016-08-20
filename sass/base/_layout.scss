@@ -33,7 +33,7 @@ body {
 .parallax-container{
     padding:$vertPadding 0;
     background-attachment: fixed;
-    min-height: 50vH;
+    min-height: 60vH;
     font-size: $rem-base;
     color:lighten($blackColor, 100%);
 }

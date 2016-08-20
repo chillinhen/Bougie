@@ -1,10 +1,10 @@
 .footer-data, 
 #page-header{
-    body:not(.architektur) &{
+    body:not([class*="architektur"]) &{
         background: $blueColor;
 
     }
-    body.architektur &{
+    body[class*="architektur"] &{
         background: $blackColor;
 
     }  
@@ -15,10 +15,10 @@
     }
     .logo {
         body.home &{
-            background:transparent url(../images/Logo.png) no-repeat center right / contain
+            background:transparent url(../images/Logo@2x.png) no-repeat center right / contain
         } 
         body:not(.home) &{
-            background:transparent url(../images/Logo-white.png) no-repeat center right / contain
+            background:transparent url(../images/Logo-white@2x.png) no-repeat center right / contain
         } 
     }
     .level_1 > li > a{
@@ -48,12 +48,32 @@
     }
     .level_3{
         body.home &,
-        body.architektur &{
+        body[class*="architektur"] &{
             background-color:lighten($blackColor,10%);
         }
-        body.immobilien &{
+        body[class*="immobilien"] &{
             background-color:darken($blueColor,10%);
         }
-            
+
+    }
+}
+
+
+body[class*="immobilien"]{
+    .skew .textPanel{background-image: url(../images/bg-skew-blue.png)}
+
+    input[type="submit"]{
+        &.button{
+            @include button-style($blueColor);
         }
     }
+}
+body[class*="architektur"]{
+    .skew .textPanel{background-image: url(../images/bg-skew-black.png)}
+
+    input[type="submit"]{
+        &.button{
+            @include button-style($blackColor);
+        }
+    }
+}

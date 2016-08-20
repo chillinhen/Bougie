@@ -32,6 +32,7 @@
 
         #top-head{
             @media screen and (min-width:$screen-md){
+                borer-top:5px solid $blackColor;
                 height:0;
                 overflow:hidden;
             }
@@ -61,9 +62,8 @@
     }
     @media screen and (min-width:$screen-md){
         @include flex-basis(20%);
-        height: 40px;
+        height: 10vH;
         width:100%;
-        background:$foo;
     }
 }
 

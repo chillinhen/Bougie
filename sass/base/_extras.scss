@@ -14,3 +14,29 @@
 
     }
 }
+#banner-team{
+    .banner{
+        background-position: top center !important;
+        background-size:90% auto !important;
+    }
+}
+#banner-mitte{
+    .banner {
+        background-position: top center !important;
+    }
+    .textPanel{
+        padding:10vH 0;
+    }
+    .blueAccent{
+        h1, h2, h3, h4, h5, h6{
+            margin-bottom:.5em !important;
+            strong{line-height:0.25;}
+            ~ * {
+                padding-left:1.5 * $defaultPadding;
+                font-size:larger;
+                
+            }
+
+        }
+    }
+}

@@ -1,10 +1,17 @@
-$column: 40px;
-$gutter: 44px;
-$grid-columns: 12;
-$max-width: 1024px;
-
 .container {
-    @include outer-container;
+    @media screen and (max-width:$screen-sm){
+        
+    }
+    @media screen and (min-device-width:$screen-sm) and (max-device-width:$screen-md) and (orientation:landscape){
+        @include outer-container(980px);
+    }
+    @media screen and (min-width:$screen-pad-landscape){
+        @include outer-container(1024px);
+    }
+    @media screen and (min-width:$screen-lg){
+        @include outer-container;
+    }
+    
 
     .page-content .mod_article > &,
     .footer-data > &
@@ -12,7 +19,7 @@ $max-width: 1024px;
         padding:$defaultPadding;
     }
 
-    body:not(.home) .mod_article > &{
+    body:not(.home) .mod_article > &:not(.mod_breadcrumb){
         padding-top:$vertPadding;
         padding-bottom:$vertPadding;
     }

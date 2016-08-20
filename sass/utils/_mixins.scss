@@ -35,8 +35,8 @@
 
 
 /*** Mixins ***/
-@mixin button-style{
-    background: black;
+@mixin button-style($col){
+    background: $col;
     color: white;
     padding: 1em;
     width: 33%;

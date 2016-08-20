@@ -15,8 +15,13 @@ figure{
     margin:0;
 }
 
-.invisible, .no-mobile{
-    display:none;
+.invisible{
+   display:none;
+}
+.no-mobile{
+    @media screen and (max-width:$screen-xs){
+        display:none;
+    }
 }
 
 //Backgrounds & gradients
@@ -55,21 +60,28 @@ figure{
         color:$goldColor !important;
     } 
 }
-
 .blueAccent{
-    h1, h2, h3, h4, h5, h6{
+    strong{
+        padding:$defaultPadding/4 $defaultPadding/2;
+        font-weight:300;
         background: $blueColor;
         color:$whiteColor;
         display:inline-block;
-        padding:$defaultPadding/4 $defaultPadding;
-        > span{display:block;}
     }
+}
+.headline{
+    padding:2 * $defaultPadding  0 $defaultPadding 0;
 }
 
 
 //Paddings/Margins
-.inner-padding{
-    padding:0 $horPadding;
+.inner-vert-padding{
+    padding-top:$vertPadding;
+    padding-bottom:$vertPadding;
+}
+.inner-hor-padding{
+    padding-left:$horPadding;
+    padding-right:$horPadding;
 }
 
 //Heights/Widths
@@ -168,17 +180,19 @@ figure{
 .more-link{
     text-decoration: none;
     background-image:url(../icons/more-infos-base.png);
-    color:$baseColor;
     font-size:$rem-base * 1.125;
     line-height:1;
     padding-left:1.5em;
     @include house-icon;
-    .white-text &{
-        background-image:url(../icons/more-infos-white.png); 
-    }
-    .gold-text &{
-        background-image:url(../icons/more-infos-gold.png); 
-    }
+}
+.blueAccent.more-link {
+    color:$baseColor;
+}
+.white-text.more-link{
+    background-image:url(../icons/more-infos-white.png); 
+}
+.gold-text.more-link{
+    background-image:url(../icons/more-infos-gold.png); 
 }
 // Google Map
 .iframe-elastic {
@@ -217,4 +231,65 @@ figure{
 .equal{
     @include justify-content(space-between);
     @include align-items(stretch);
+}
+
+/** Extras **/
+.circle{
+    @include circle-quote(300px);
+    &.quote{
+        position:relative;
+        padding:4.2em;
+        .lead {
+            margin:0 0 1em 0;
+        }
+        &:before{
+            @include badge-style(80px);
+            position: absolute;
+            top:0;
+            right:0;
+            z-index: 999;
+        }
+    }
+    &.circle-image{
+        overflow:hidden;
+        img {
+            max-width: none;
+            height:100%;
+            width:auto;
+        }
+    }
+}
+
+
+.skew{
+    em {
+        font-style: normal;
+        color:$goldColor;
+    }
+    .textPanel{
+
+        &:before{
+            @include badge-style(80px);
+            margin:-$defaultPadding 0 $defaultPadding;
+        }
+        @include size(40%);
+        padding:4em;
+        background:{
+            color:transparent;
+            repeat:no-repeat;
+            position:center center;
+            size:cover;
+        }
+
+        p {
+            color:$lightGrayColor;
+            &:first-child{
+                @extend %lead;
+            }
+            &:last-child{
+                margin-bottom: 80px;/** same size/height as badge-style ***/
+            }
+        }
+
+    }
 }

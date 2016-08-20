@@ -17,11 +17,7 @@ textarea{
 .submit_container{
     width:100%;
 }
-input[type="submit"]{
-    &.button{
-        @include button-style;
-    }
-}
+
 .rueckruf{
     @include outer-container(70%);
     .row {
