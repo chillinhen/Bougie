@@ -262,12 +262,14 @@ figure{
 
 
 .skew{
-    em {
-        font-style: normal;
-        color:$goldColor;
-    }
+    .container{position:relative;}
     .textPanel{
-
+        @media screen and (min-device-width:$screen-md){
+            position:absolute;
+            top:-2em;
+            left:0;
+            min-height:400px;
+        }
         &:before{
             @include badge-style(80px);
             margin:-$defaultPadding 0 $defaultPadding;
