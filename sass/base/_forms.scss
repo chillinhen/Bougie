@@ -9,7 +9,7 @@ textarea{
 input[type="text"], 
 input[type="email"],
 textarea{
-    .rueckruf & {
+    .ce_form & {
         width:100%;
         border:1px solid $grayColor; 
     }   
@@ -18,7 +18,7 @@ textarea{
     width:100%;
 }
 
-.rueckruf{
+.ce_form{
     @include outer-container(70%);
     .row {
         @extend .flexbox;
