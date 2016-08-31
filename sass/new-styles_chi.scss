@@ -4,8 +4,21 @@
 @import "/Users/chilliscope/Documents/Webseiten/toolbox/sass/myMixins/mixins";
 @import "/Users/chilliscope/Documents/Webseiten/toolbox/sass/myMixins/breakpoints";
 
-@import "../css/new-styles.css";
-@import "../css/toggler_2016.css";
+@import "utils/_variables";
+@import "utils/_mixins";
+@import "base/_grid";
+
+@import "base/_globals";
+@import "base/_typographie";
+@import "base/_color-scheme";
+
+@import "base/_navigation";
+@import "base/_module";
+@import "base/_forms";
+
+
+@import "base/_layout";
+@import "base/_extras";
 //@import "_shame";
 
 

@@ -1,0 +1,73 @@
+.toggler {
+    min-width:250px;
+    max-width:1200px;
+    padding:1px 0 32px;
+    color:#EC672E;
+
+}
+
+ 
+.toggler_first {
+    height:28px;
+    display:block;
+    padding:5px 0 3px 6px;
+    color: #977f43;
+    font-family: "Open Sans",sans-serif;
+font-size: 20px;
+    behavior:url('assets/css3pie/1.0.0/PIE.htc');
+    
+}
+
+ 
+.toggler_first:a {
+    color:#EC672E;
+}
+
+ 
+.toggler_first:hover,
+.toggler.active .toggler_first {
+    font-weight:bold;
+     color:#977f43;
+    cursor:pointer;
+}
+
+ 
+.toggler_first:before {
+    width:15px;
+    height:20px;
+    float:left;
+    display:block;
+    margin-top:0;
+    margin-right:10px;
+    padding-right:3px;
+    padding-left:3px;
+    text-align:center;
+    border-radius:3px;
+    font-weight:bold;
+    behavior:url('assets/css3pie/1.0.0/PIE.htc');
+    border:1px solid #$bdr1;
+    font:16px $c+;
+    color:#977f43;
+    content:" >> ";
+}
+
+ 
+.toggler_first:hover:before,
+.toggler.active .toggler_first:before {
+    border-radius:3px;
+    font-size:16px;
+    font-weight:bold;
+    behavior:url('assets/css3pie/1.0.0/PIE.htc');
+     
+    color:#977f43;
+    content:"-";
+    padding-top:1px;
+}
+
+ 
+.accordion  {
+    padding:6px 0 8px 15px;
+    line-height:16px;
+ 
+}
+
