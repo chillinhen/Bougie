@@ -38,8 +38,7 @@
 @mixin button-style($col){
     background: $col;
     color: white;
-    padding: 1em;
-    width: 33%;
+    padding: 1em 3em;
     letter-spacing: .2em;
 }
 

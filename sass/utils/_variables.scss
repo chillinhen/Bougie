@@ -7,7 +7,10 @@ $defaultColor: #666666;
 $blueColor: #354a73; // blue
 $grayColor: #dcdcdc;
 $lightGrayColor: #efefef;
+$borderColor:#d9d9d9;
+
 $darkGrayColor: #2f2f2f;
+$darkHeadline:#262626;
 
 $goldColor:#977f43;
 $quoteColor: $goldColor;
@@ -25,10 +28,10 @@ $baseColor:$blueColor;
 
 
 /* ** NUMBERS ** */
-$defaultMargin: 20px;
+$defaultMargin: 1.4em;
 $defaultPadding: 2em;
 $horPadding:7.5vW;
-$vertPadding:3 * $defaultPadding;
+$vertPadding:4em;
 
 
 /*** Typo ***/

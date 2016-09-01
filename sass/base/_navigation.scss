@@ -1,3 +1,29 @@
+.mod_customnav { 
+    display: block;
+    &, & * {text-decoration: none;}
+    &.buttons{
+        li{
+            display:block;
+            margin-bottom: $defaultPadding/2;
+
+            a, span {
+                display:block;
+                padding:$defaultPadding/4 $defaultPadding/2;
+                color:$whiteColor;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+            a{
+                background:$blackColor; 
+            }
+            span{
+                background:$blueColor; 
+            }
+        }
+
+    }
+}
+
 .responsive-logo{
     @media screen and (max-width:$screen-md){
         padding:.5em 1em; 
@@ -196,31 +222,43 @@
     @media screen and (min-width:$screen-sm){
         padding:$vertPadding $horPadding; 
     }
-
-    ul.level_1{
-        > li.submenu > a,
-        > li.submenu > span{
-            @extend %footerHeaderstyle;
-        }
+    [class*="col-"].flexbox{
         @media screen and (min-width:$screen-sm){
             padding-right:$horPadding;
             @include display(flex);
             @include justify-content(space-between);
             @include align-items(flex-start); 
         }
+    }
+    .mod_customnav ul.level_1 li.first{
+        a, span {@extend %footerHeaderstyle;}
+        
         @media screen and (max-width:$screen-sm - 1){
-            > li.submenu > a,
-            > li.submenu > span{
-
                 padding-top:$defaultPadding/2;
                 margin-top:$defaultPadding/2;
                 border-top:1px solid $defaultColor;
+                &:first-child > a,:first-child > span{border:0; }
+        }
+    }
+    ul.level_1{
+/*        > li.submenu > a,
+        > li.submenu > span{
+            @extend %footerHeaderstyle;
+        }*/
+
+/*        @media screen and (max-width:$screen-sm - 1){
+            > li.submenu > a,
+            > li.submenu > span{
+                padding-top:$defaultPadding/2;
+                margin-top:$defaultPadding/2;
+                border-top:1px solid $defaultColor;
+
             }
             > li.submenu:first-child > a,
                 > li.submenu:first-child > span{
                 border:0; 
             }
-        }
+        }*/
 
     }
     hr {

@@ -1,6 +1,6 @@
 .container {
-    @media screen and (max-width:$screen-sm){
-        
+    @media screen and (max-width:$screen-xs){
+        padding:1em;
     }
     @media screen and (min-device-width:$screen-sm) and (max-device-width:$screen-md) and (orientation:landscape){
         @include outer-container(980px);
@@ -11,7 +11,7 @@
     @media screen and (min-width:$screen-lg){
         @include outer-container;
     }
-    
+
 
     .page-content .mod_article > &,
     .footer-data > &
@@ -19,11 +19,26 @@
         padding:$defaultPadding;
     }
 
-    body:not(.home) .mod_article > &:not(.mod_breadcrumb){
+    .page-content &:not(.mod_breadcrumb){
         padding-top:$vertPadding;
         padding-bottom:$vertPadding;
     }
+    &.divider{
+        padding:0 !important;
+    }
 
+}
+.container1{
+    @media screen and (min-width:$screen-lg){
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        &:after{
+            clear: both;
+            content: "";
+            display: table;
+        }
+    }
 }
 .flexbox{
     @include display(flex);
@@ -69,41 +84,54 @@
             @include flex-basis(100%/12);
         }
         .col-2{
-           @include flex-basis(100%/6);
+            @include flex-basis(100%/6);
         }
         .col-3{
-          @include flex-basis(25%);
+            @include flex-basis(25%);
 
         }
         .col-4{
-           @include flex-basis(100%/3);
+            @include flex-basis(100%/3);
         }
         .col-5{
-           @include flex-basis((100%/12)*5);
+            @include flex-basis((100%/12)*5);
         }
         .col-6{
             @include flex-basis(50%);
         }
         .col-7{
-          @include flex-basis((100%/12)*7);
+            @include flex-basis((100%/12)*7);
         }
         .col-8{
             @include flex-basis(100%/3*2);
         }
         .col-9{
-           @include flex-basis((100%/12)*9);
+            @include flex-basis((100%/12)*9);
         }
         .col-10{
             @include flex-basis((100%/12)*10);
         }
         .col-11{
-           @include flex-basis((100%/12)*11);
+            @include flex-basis((100%/12)*11);
         }
         .col-12{
-           @include flex-basis(100%);
+            @include flex-basis(100%);
         }
     }
 
+}
+.two-columns{
+    @media screen and (min-width: $screen-md) {
+        .main{
+            width:65%;
+            margin-right: 5%;
+            float:left;
+        }
+        .sidebar{
+            width:25%;
+            float:left;
+        }
+    }
 }
 
 

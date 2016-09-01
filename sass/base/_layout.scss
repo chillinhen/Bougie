@@ -80,3 +80,10 @@ body {
 
     }
 }
+#bgkontakt {
+    background-image:url("../images/hg_kontakt.jpg");
+    background-repeat:no-repeat;
+}
+    body.two-columns .page-content {
+        padding:2 * $defaultPadding 0;
+    }

@@ -1,7 +1,7 @@
 %lead{
-   font-size: $rem-base * 1.4;
-   line-height: 1.5;
-   margin:$defaultPadding 0;
+    font-size: $rem-base * 1.4;
+    line-height: 1.5;
+    margin:$defaultPadding 0;
 }
 %bold{font-weight: 600;};
 %unstyled-list{
@@ -49,16 +49,46 @@ h6{
     }
     .sitemap-footer & {@extend %footerHeaderstyle;}
     .ce_text &{ margin-bottom: 0;}
+    .info-box & {
+        text-transform: uppercase;
+        margin-bottom: $defaultMargin/2;
+        font-size:3 * $rem-base;
+    }
     .text-teaser &{
-         color:darken($defaultColor,25%);
-         margin:1em 0;
-         padding:0 1em;
-         :before{
-             content:'';
-             @include house-icon;
-             background-image:url(../icons/more-infos-gold.png);
-             @include size(1em);
-         }
+        color:darken($defaultColor,25%);
+        margin:1em 0;
+        padding:0 1em;
+    }
+    .text-teaser &,
+    .team-teaser &{
+        &:before{
+            content:'';
+            @include house-icon;
+            background-image:url(../icons/more-infos-gold.png);
+            @include size(1em);
+            float:left;
+        }
+    }
+
+    .team-teaser &{
+        @media screen and (min-device-width:$screen-xs){
+            &{
+                margin:$defaultPadding;
+            }
+            ~ p{
+                margin:{
+                    left:3 * $defaultPadding;
+                    right:$defaultPadding;
+                } 
+            }
+        }
+        &:before{
+            margin-right: $defaultPadding/2;
+        }
+        &{
+            margin:$defaultPadding 0;
+        }
+
     }
     .panel & {
         @media screen and (max-device-width:$screen-xs) and (orientation:portrait){
@@ -77,7 +107,7 @@ h6{
     .bg-layer & {
         color:$whiteColor !important;
     }
-    .blue-text &{
+    &.blue-text{
         @extend .blue-text;
     }
 }
@@ -88,7 +118,7 @@ h1 {
     &.logo{
         margin:0;
     }
-    
+
 }
 h2 {
     font-size:3 * $rem-base;
@@ -98,9 +128,9 @@ h2 {
 
 h1, h2 {
     .bg-layer &{
-       font-size:2.15 * $rem-base; 
+        font-size:2.15 * $rem-base; 
     }
-        + p{
+    + p{
         @extend %lead;
     }
 }
@@ -113,9 +143,11 @@ h3, h4 {
 
 
 h5, h6 {
-    font-size: $rem-base;
+    font-size: 1.4285 * $rem-base;
     line-height: $base-line-height;
-    font-weight:600;
+    font-weight:400;
+    padding-bottom: 1em;
+    color:$blackColor;
 }
 // PARAGRAPHS
 p {
@@ -127,20 +159,24 @@ p {
     @media screen and (min-device-width:$screen-sm){
         font-size: $rem-base;
     }
-    
+
     font-weight: normal;
     line-height: $base-line-height;
-    
+
     .block &{
         @extend %clearfix;
         &:last-of-type{
             margin-bottom: 0;
         }
     }
+    .info-box &{
+        @extend %lead;
+    }
 }
 // LINKS
 a{
     color:$body-text-color;
+    font-size:inherit;
     .logo &{
         color:$defaultColor;
         body.home & {color:#fff;}
@@ -156,6 +192,9 @@ a{
     &.view-article:after{
         content:  " \f0da";
     }
+    .info-box &,
+    .sitemap-footer &,
+    .mod_newslist &,
     .mod_navigation &,
     #top-head &{
         text-decoration: none;
@@ -170,9 +209,9 @@ ol {
     margin:0;
     padding:0;
     .ce_text & {
-    padding-left: 1.5rem;
-    margin-bottom:$paragraph-margin;
-    list-style: square outside;
+        padding-left: 1.5rem;
+        margin-bottom:$paragraph-margin;
+        list-style: square outside;
     }
 
     li {
@@ -215,7 +254,7 @@ blockquote {
     border-left: 5px solid $baseColor;
     padding-left: 1em;
     text-indent: -0.4em;
-    
+
     #recommends & {
         @extend %reset;
     }
@@ -248,7 +287,7 @@ address{
 }
 /*** tables ****/
 table {
-    
+
     margin-bottom:2em;
     th{
         text-align: left;
@@ -260,8 +299,8 @@ table {
 }
 // INLINES
 .lead{
-        @extend %lead;
-    }
+    @extend %lead;
+}
 strong{ @extend %bold;}
 .text-left { text-align: left; }
 .text-center { text-align: center; }

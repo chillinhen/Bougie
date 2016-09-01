@@ -96,7 +96,7 @@ body:not(.home) .mod_article > .container:not(.mod_breadcrumb) {
   padding-top: 4em;
   padding-bottom: 4em; }
 
-.flexbox, .rueckruf .row {
+.flexbox, .ce_form .row {
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -104,7 +104,7 @@ body:not(.home) .mod_article > .container:not(.mod_breadcrumb) {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex; }
-  .col-1 .flexbox, .col-1 .rueckruf .row, .rueckruf .col-1 .row, .col-2 .flexbox, .col-2 .rueckruf .row, .rueckruf .col-2 .row, .col-3 .flexbox, .col-3 .rueckruf .row, .rueckruf .col-3 .row, .col-4 .flexbox, .col-4 .rueckruf .row, .rueckruf .col-4 .row, .col-5 .flexbox, .col-5 .rueckruf .row, .rueckruf .col-5 .row, .col-6 .flexbox, .col-6 .rueckruf .row, .rueckruf .col-6 .row {
+  .col-1 .flexbox, .col-1 .ce_form .row, .ce_form .col-1 .row, .col-2 .flexbox, .col-2 .ce_form .row, .ce_form .col-2 .row, .col-3 .flexbox, .col-3 .ce_form .row, .ce_form .col-3 .row, .col-4 .flexbox, .col-4 .ce_form .row, .ce_form .col-4 .row, .col-5 .flexbox, .col-5 .ce_form .row, .ce_form .col-5 .row, .col-6 .flexbox, .col-6 .ce_form .row, .ce_form .col-6 .row {
     -webkit-box-orient: vertical;
     -moz-box-orient: vertical;
     box-orient: vertical;
@@ -115,21 +115,21 @@ body:not(.home) .mod_article > .container:not(.mod_breadcrumb) {
     -moz-flex-direction: column;
     flex-direction: column;
     -ms-flex-direction: column; }
-  .flexbox > [class*="col-"].panel, .rueckruf .row > [class*="col-"].panel {
+  .flexbox > [class*="col-"].panel, .ce_form .row > [class*="col-"].panel {
     padding: 1em; }
     @media screen and (max-width: 600px) {
-      .flexbox > [class*="col-"].panel, .rueckruf .row > [class*="col-"].panel {
+      .flexbox > [class*="col-"].panel, .ce_form .row > [class*="col-"].panel {
         margin: 1em 0; } }
     @media screen and (min-width: 600px) {
-      .flexbox > [class*="col-"].panel, .rueckruf .row > [class*="col-"].panel {
+      .flexbox > [class*="col-"].panel, .ce_form .row > [class*="col-"].panel {
         margin: 10.01px 7px; } }
     @media screen and (min-width: 768px) {
-      .flexbox > [class*="col-"].panel:first-child, .rueckruf .row > [class*="col-"].panel:first-child {
+      .flexbox > [class*="col-"].panel:first-child, .ce_form .row > [class*="col-"].panel:first-child {
         margin-left: 0; }
-      .flexbox > [class*="col-"].panel:last-child, .rueckruf .row > [class*="col-"].panel:last-child {
+      .flexbox > [class*="col-"].panel:last-child, .ce_form .row > [class*="col-"].panel:last-child {
         margin-right: 0; } }
   @media screen and (max-width: 601px) {
-    .flexbox, .rueckruf .row {
+    .flexbox, .ce_form .row {
       -webkit-box-orient: vertical;
       -moz-box-orient: vertical;
       box-orient: vertical;
@@ -140,67 +140,67 @@ body:not(.home) .mod_article > .container:not(.mod_breadcrumb) {
       -moz-flex-direction: column;
       flex-direction: column;
       -ms-flex-direction: column; }
-      .flexbox > [class*="col-"], .rueckruf .row > [class*="col-"] {
+      .flexbox > [class*="col-"], .ce_form .row > [class*="col-"] {
         width: 100%;
         float: none;
         padding: 1em; } }
   @media screen and (min-width: 768px) {
-    .flexbox .col-1, .rueckruf .row .col-1 {
+    .flexbox .col-1, .ce_form .row .col-1 {
       -webkit-flex-basis: 8.33333%;
       -moz-flex-basis: 8.33333%;
       flex-basis: 8.33333%;
       -ms-flex-preferred-size: 8.33333%; }
-    .flexbox .col-2, .rueckruf .row .col-2 {
+    .flexbox .col-2, .ce_form .row .col-2 {
       -webkit-flex-basis: 16.66667%;
       -moz-flex-basis: 16.66667%;
       flex-basis: 16.66667%;
       -ms-flex-preferred-size: 16.66667%; }
-    .flexbox .col-3, .rueckruf .row .col-3 {
+    .flexbox .col-3, .ce_form .row .col-3 {
       -webkit-flex-basis: 25%;
       -moz-flex-basis: 25%;
       flex-basis: 25%;
       -ms-flex-preferred-size: 25%; }
-    .flexbox .col-4, .rueckruf .row .col-4 {
+    .flexbox .col-4, .ce_form .row .col-4 {
       -webkit-flex-basis: 33.33333%;
       -moz-flex-basis: 33.33333%;
       flex-basis: 33.33333%;
       -ms-flex-preferred-size: 33.33333%; }
-    .flexbox .col-5, .rueckruf .row .col-5 {
+    .flexbox .col-5, .ce_form .row .col-5 {
       -webkit-flex-basis: 41.66667%;
       -moz-flex-basis: 41.66667%;
       flex-basis: 41.66667%;
       -ms-flex-preferred-size: 41.66667%; }
-    .flexbox .col-6, .rueckruf .row .col-6 {
+    .flexbox .col-6, .ce_form .row .col-6 {
       -webkit-flex-basis: 50%;
       -moz-flex-basis: 50%;
       flex-basis: 50%;
       -ms-flex-preferred-size: 50%; }
-    .flexbox .col-7, .rueckruf .row .col-7 {
+    .flexbox .col-7, .ce_form .row .col-7 {
       -webkit-flex-basis: 58.33333%;
       -moz-flex-basis: 58.33333%;
       flex-basis: 58.33333%;
       -ms-flex-preferred-size: 58.33333%; }
-    .flexbox .col-8, .rueckruf .row .col-8 {
+    .flexbox .col-8, .ce_form .row .col-8 {
       -webkit-flex-basis: 66.66667%;
       -moz-flex-basis: 66.66667%;
       flex-basis: 66.66667%;
       -ms-flex-preferred-size: 66.66667%; }
-    .flexbox .col-9, .rueckruf .row .col-9 {
+    .flexbox .col-9, .ce_form .row .col-9 {
       -webkit-flex-basis: 75%;
       -moz-flex-basis: 75%;
       flex-basis: 75%;
       -ms-flex-preferred-size: 75%; }
-    .flexbox .col-10, .rueckruf .row .col-10 {
+    .flexbox .col-10, .ce_form .row .col-10 {
       -webkit-flex-basis: 83.33333%;
       -moz-flex-basis: 83.33333%;
       flex-basis: 83.33333%;
       -ms-flex-preferred-size: 83.33333%; }
-    .flexbox .col-11, .rueckruf .row .col-11 {
+    .flexbox .col-11, .ce_form .row .col-11 {
       -webkit-flex-basis: 91.66667%;
       -moz-flex-basis: 91.66667%;
       flex-basis: 91.66667%;
       -ms-flex-preferred-size: 91.66667%; }
-    .flexbox .col-12, .rueckruf .row .col-12 {
+    .flexbox .col-12, .ce_form .row .col-12 {
       -webkit-flex-basis: 100%;
       -moz-flex-basis: 100%;
       flex-basis: 100%;
@@ -452,7 +452,7 @@ figure {
   align-items: center;
   -ms-flex-align: center; }
 
-.equal, .flexbox.equal, .rueckruf .row {
+.equal, .flexbox.equal, .ce_form .row {
   -webkit-box-pack: justify;
   -moz-box-pack: justify;
   box-pack: justify;
@@ -1369,8 +1369,8 @@ textarea {
   font-size: 14px;
   border: 0; }
 
-.rueckruf input[type="text"], .rueckruf
-input[type="email"], .rueckruf
+.ce_form input[type="text"], .ce_form
+input[type="email"], .ce_form
 textarea {
   width: 100%;
   border: 1px solid #dcdcdc; }
@@ -1378,23 +1378,23 @@ textarea {
 .submit_container {
   width: 100%; }
 
-.rueckruf {
+.ce_form {
   max-width: 70%;
   margin-left: auto;
   margin-right: auto; }
-  .rueckruf::after {
+  .ce_form::after {
     clear: both;
     content: "";
     display: table; }
-  .rueckruf .row {
+  .ce_form .row {
     margin: 1.5em 0; }
-    .rueckruf .row .widget-text {
+    .ce_form .row .widget-text {
       -webkit-flex-basis: 30%;
       -moz-flex-basis: 30%;
       flex-basis: 30%;
       -ms-flex-preferred-size: 30%;
       margin: 0 1.5%; }
-    .rueckruf .row .widget-textarea {
+    .ce_form .row .widget-textarea {
       -webkit-flex-basis: 100%;
       -moz-flex-basis: 100%;
       flex-basis: 100%;
