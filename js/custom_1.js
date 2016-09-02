@@ -46,7 +46,7 @@
             e.preventDefault()
         });
         
-        var stickyNavTop = $('#page-header').offset().top;
+                        var stickyNavTop = $('#page-header').offset().top;
 
                 var stickyNav = function () {
                     var scrollTop = $(window).scrollTop();
@@ -58,8 +58,24 @@
                     }
                 };
 
-                stickyNav();
-                $(window).scroll(stickyNav);
+                //stickyNav();
+                //$(window).scroll(stickyNav);
+
+        // responsive
+        $(window).bind("resize", resizeWindow);
+        function resizeWindow(e) {
+            var newWindowWidth = $(window).width();
+
+            // If width width is below 768px, switch to the mobile stylesheet
+            if (newWindowWidth < 768) {
+
+
+            } else {
+                //scrolling
+
+            }
+
+        }
 
 
 

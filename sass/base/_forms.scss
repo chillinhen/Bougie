@@ -19,6 +19,10 @@ textarea{
     font-size: $rem-base;
     border:0;
     text-align: left;
+    
+    .newsletter &{
+        text-align: center;
+    }
     @include placeholder{
         padding: 0 1.4em; 
     }
@@ -40,8 +44,9 @@ input[type="email"],
 textarea{
     .ce_form & {
         width:100%;
-
         color:$text-muted-color;
+        font-family: open sans;
+        padding-left: 1em;
     }   
 }
 input[type="checkbox"]{
@@ -165,17 +170,25 @@ input[type="submit"]{
 
 
     &.newsletter {
-
         max-width: 100%;
-        padding:$defaultPadding*1.5 0;
+        @media screen and (max-width:$screen-md){
+            padding:$defaultPadding 1em;
+        }
+        @media screen and (min-width:$screen-md){
+          padding:$defaultPadding*1.5 25%;  
+        }
+        
         background:transparent url(../images/bg-full-width.jpg) no-repeat center center / cover;
         .submit_container {
             padding-bottom:$defaultPadding;
         }
-        form {
-            max-width: 70%;
-            margin-left: auto;
-            margin-right: auto;
+        .widget-text{
+            text-align: center;
+            flex-basis: 70%;
+            margin:{
+                left:auto;
+                right:auto;
+            }
         }
     }
 }
@@ -216,6 +229,9 @@ input[type="submit"]{
 }
 .explanation{
     color:$text-muted-color;
+    .newsletter &{
+       color:$blackColor; 
+    }
 }
 .submit_container{
     margin:0 1em;

@@ -224,7 +224,7 @@
     }
     [class*="col-"].flexbox{
         @media screen and (min-width:$screen-sm){
-            padding-right:$horPadding;
+            padding-right:1.5 * $horPadding;
             @include display(flex);
             @include justify-content(space-between);
             @include align-items(flex-start); 

@@ -85,8 +85,10 @@
     }
 }
 .mod_newsreader {
-    .layout_full > *{
-        padding:0 0 $defaultMargin 0;
+    .news-full {
+        .info{
+            padding:$defaultMargin 0;
+        }
     }
 }
 
@@ -96,10 +98,10 @@
     }
     .team & .flexbox.container:first-child {
         margin:0 7.5vW;
-/*        figure img{
-            width:340px;
-            height:auto;
-        }*/
+        /*        figure img{
+                    width:340px;
+                    height:auto;
+                }*/
     }
 }
 
@@ -108,7 +110,7 @@
         @media screen and (min-width:$screen-sm){
             @include columns(2 $defaultPadding/2); 
         }
-        
+
         .block{
             @include page-break(avoid);
             margin:$defaultPadding/2;
@@ -127,11 +129,9 @@
             @extend .gold-text;
             font-weight: 300;
         }
-        line-height: 1.2;
-        padding:{
-            top:.5em;
-            bottom:.5em;
-        }
+        line-height: 1.4;
+        padding:0 .5em .5em 2 * $defaultPadding;
+        margin-bottom: $defaultPadding;
         background-image: url(../icons/more-infos-gold.png);
     }
 
@@ -199,10 +199,10 @@
     }
     &.team-teaser{
         margin:1em;
-/*        figure img {
-            width: 290px;
-            height:auto;
-        }*/
+        /*        figure img {
+                    width: 290px;
+                    height:auto;
+                }*/
     }
 }
 ce_headline{
@@ -249,7 +249,7 @@ ce_headline{
 
     &:not(.ref-logos){
         @media screen and (min-width:$screen-sm){
-/*            padding: $vertPadding $horPadding;  */
+            /*            padding: $vertPadding $horPadding;  */
 
             ul.cols_3{
                 @include columns(3 .5em); 

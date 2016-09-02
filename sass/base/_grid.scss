@@ -13,15 +13,19 @@
     }
 
 
-    .page-content .mod_article > &,
+    
     .footer-data > &
     .sitemap-footer  > &{
-        padding:$defaultPadding;
+        @media screen and (max-width:$screen-sm){
+            padding:$defaultPadding;
+        }   
     }
 
     .page-content &:not(.mod_breadcrumb){
-        padding-top:$vertPadding;
-        padding-bottom:$vertPadding;
+        padding:{
+            top:$vertPadding;
+            bottom:$vertPadding;
+        }
     }
     &.divider{
         padding:0 !important;
@@ -121,6 +125,12 @@
 
 }
 .two-columns{
+    @media screen and (max-width:$screen-md - 1){
+        .main, .sidebar{
+            padding:0 $defaultPadding;
+        }
+        
+    }
     @media screen and (min-width: $screen-md) {
         .main{
             width:65%;

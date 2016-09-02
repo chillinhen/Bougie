@@ -56,37 +56,23 @@ h6{
     }
     .text-teaser &{
         color:darken($defaultColor,25%);
-        margin:1em 0;
-        padding:0 1em;
-    }
-    .text-teaser &,
-    .team-teaser &{
-        &:before{
-            content:'';
-            @include house-icon;
-            background-image:url(../icons/more-infos-gold.png);
-            @include size(1em);
-            float:left;
-        }
+        margin: 1em 0;
+        img {margin-right: 21px;}
+        
     }
 
+
     .team-teaser &{
+        img {margin-right: 1em;}
         @media screen and (min-device-width:$screen-xs){
-            &{
-                margin:$defaultPadding;
+            & {
+                opacity: 1;
+                margin-left:65px;
+                margin-top: 2em;
             }
-            ~ p{
-                margin:{
-                    left:3 * $defaultPadding;
-                    right:$defaultPadding;
-                } 
+             ~ p{
+                margin: 1em 105px;
             }
-        }
-        &:before{
-            margin-right: $defaultPadding/2;
-        }
-        &{
-            margin:$defaultPadding 0;
         }
 
     }
