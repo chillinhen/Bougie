@@ -1,1 +1,299 @@
-  .col-1 .flexbox, .col-1 .newsletter .row, .newsletter .col-1 .row, .col-2 .flexbox, .col-2 .newsletter .row, .newsletter .col-2 .row, .col-3 .flexbox, .col-3 .newsletter .row, .newsletter .col-3 .row, .col-4 .flexbox, .col-4 .newsletter .row, .newsletter .col-4 .row, .col-5 .flexbox, .col-5 .newsletter .row, .newsletter .col-5 .row, .col-6 .flexbox, .col-6 .newsletter .row, .newsletter .col-6 .row
+.mod_customnav { 
+    display: block;
+    &, & * {text-decoration: none;}
+    &.buttons{
+        li{
+            display:block;
+            margin-bottom: $defaultPadding/2;
+
+            a, span {
+                display:block;
+                padding:$defaultPadding/4 $defaultPadding/2;
+                color:$whiteColor;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+            a{
+                background:$blackColor; 
+            }
+            span{
+                background:$blueColor; 
+            }
+        }
+
+    }
+}
+.responsive-logo{
+    @media screen and (max-width:$screen-md){
+        padding:.5em 1em; 
+    }
+    @media screen and (min-width:$screen-md){
+        display:none; 
+    }
+
+}
+.nav-responsive{
+    @media screen and (max-width:$screen-md){
+        width:30px;
+        display:block;
+        margin-right:1em;
+        > span{
+            display:block;
+            background: $whiteColor;
+            height:3px;
+            margin-bottom: 6px;
+        } 
+    }
+}
+#page-header{
+    background:$baseColor;
+    *{color:white;} 
+    &.sticky{
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:999999;
+
+        #top-head{
+            @media screen and (min-width:$screen-md){
+                borer-top:5px solid $blackColor;
+                height:0;
+                overflow:hidden;
+            }
+        }
+    }
+}
+.nav-wrapper{
+    @media screen and (min-width:$screen-md){
+        @include flex-basis(60%);
+        @include display(flex);
+        @include justify-content(space-between);
+        > .mod_navigation{
+            @include flex(2);
+        } 
+    }
+
+}
+.logo{
+    a{
+        @extend %text-indent;
+        display:block;
+        &:hover{cursor:pointer;}
+    }
+
+    @media screen and (max-width:$screen-md){
+        display:none;
+    }
+    @media screen and (min-width:$screen-md){
+        @include flex-basis(20%);
+        height: 10vH;
+        width:100%;
+    }
+}
+
+#navigation {
+    @include outer-container;
+    position: relative;
+    @media screen and (max-width:$screen-md){
+        @include transition(all 300ms ease-in);
+        height:0;
+        padding-left:1em;
+        padding-right:1em;
+        overflow:hidden;
+        &.show{
+            @include transition(all 300ms ease-out);
+            padding-top:1em;
+            padding-bottom:1em;
+            height:auto;
+        }
+    }
+    @media screen and (min-width:$screen-md){
+        @include display(flex);
+        @include align-items(flex-end);
+        @include justify-content(space-between);
+        height:100%;
+        padding:3em 0;
+        .sticky & {
+            @include transition(all 500ms ease-in);
+            padding:1em 0;
+            &:hover{
+                @include transition(all 500ms ease-in);
+                padding:3em 0; 
+            }
+        }
+    }
+}
+.nav-wrapper{
+    padding:2em 0;
+    ul.level_2{
+        height:0;
+        overflow: hidden;
+        @include transition(all 500ms ease-in-out);
+    }
+    &:hover{
+        cursor: pointer;
+        #main-nav {
+            .level_2{
+                 @media screen and (max-width:$screen-md){
+                @include transition(all 500ms ease-in-out);
+                height:180px;
+                 }
+            }
+        }
+    }
+}
+#main-nav {
+    #page-header & {
+        @extend .uppercase;
+        li {
+            @media screen and (max-width:$screen-md){
+                display:block;
+
+                > span,
+                > a{
+                    display:block;
+                    padding:1em 0;
+                    border-bottom:1px solid white;
+                }
+                &:last-child{
+                    a, span{
+                        border:0;
+                    }
+                }
+            }
+        }
+        .level_1{
+            width: 100%;
+            @media screen and (max-width:$screen-md){
+                margin-bottom:1em;
+                .level_2{
+                    @media screen and (max-width:$screen-md){
+                        height:0;
+                        overflow:hidden;
+                    }
+                }
+                li:hover, li:focus{
+                    .level_2{
+                        height:200px;
+                        @include transition(all 5s ease-out);
+                        overflow: no-content;
+                    }
+                }
+            }
+            @media screen and (min-width:$screen-md){
+                @include display(flex);
+                > li {
+                    @include flex-basis(100%/3); 
+                    position:relative;
+                    padding: 0 3em;
+                    border-right:1px solid lighten($darkGrayColor,25%);
+                    &:last-child{
+                        border:0;
+                    }
+                }
+                .level_2{
+                    > li{
+                        &:hover{
+                            @media screen and (min-width:$screen-md){
+                                width:200%;
+                                display:block;
+                                .level_3{
+                                    display:block;
+                                    @include show-level_3;
+                                }
+                            }
+                        }
+                    }
+                }
+                .level_3{
+                    display:none;
+                }
+            }
+
+        }
+
+    }
+}
+
+.sitemap-footer{
+    background: $whiteColor;
+    @media screen and (max-width:$screen-sm){
+        [class*="col"]{
+            width:100%;
+        }
+        h3{
+            margin-top:$defaultPadding;
+        }
+    }
+    @media screen and (min-width:$screen-sm){
+        padding:$vertPadding $horPadding; 
+    }
+    [class*="col-"].flexbox{
+        @media screen and (min-width:$screen-sm){
+            padding-right:1.5 * $horPadding;
+            @include display(flex);
+            @include justify-content(space-between);
+            @include align-items(flex-start); 
+        }
+    }
+    .mod_customnav ul.level_1 li.first{
+        a, span {@extend %footerHeaderstyle;}
+
+        @media screen and (max-width:$screen-sm - 1){
+            padding-top:$defaultPadding/2;
+            margin-top:$defaultPadding/2;
+            border-top:1px solid $defaultColor;
+            &:first-child > a,:first-child > span{border:0; }
+        }
+    }
+    ul.level_1{
+        /*        > li.submenu > a,
+                > li.submenu > span{
+                    @extend %footerHeaderstyle;
+                }*/
+
+        /*        @media screen and (max-width:$screen-sm - 1){
+                    > li.submenu > a,
+                    > li.submenu > span{
+                        padding-top:$defaultPadding/2;
+                        margin-top:$defaultPadding/2;
+                        border-top:1px solid $defaultColor;
+        
+                    }
+                    > li.submenu:first-child > a,
+                        > li.submenu:first-child > span{
+                        border:0; 
+                    }
+                }*/
+
+    }
+    hr {
+        margin-bottom: 2em;
+    }
+}
+.social-media {
+
+    li {
+        display:inline-block;
+        margin-right:.8em;
+        a{
+            &:before{
+                content:' ';
+                @include size(30px);
+                display:inline-block;
+                @extend %background-icon;
+            }
+            > span {display:none;}
+        }
+        .facebook:before{
+            background-image:url(../icons/facebook-grey.png);
+        }
+        .google-plus:before{
+            background-image:url(../icons/google-plus-grey.png);
+        }
+        .you-tube:before{
+            background-image:url(../icons/you-tube-grey.png);
+        }
+    }
+}

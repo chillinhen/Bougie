@@ -71,10 +71,27 @@
         @include display(flex);
         @include justify-content(space-between);
         > .mod_navigation{
-            @include flex(2);
-        } 
-    }
+/*            @include flex(2);*/
+        }
+        ul.level_1{
+            padding:2em 0;
+            .level_2{
+                overflow: hidden;
+                height:0;
+                @include transition(all 300ms ease-in);  
 
+            }
+            &:hover{
+                cursor:pointer;
+            }
+            &.open{
+                .level_2{
+                    height:180px;
+                    @include transition(all 300ms ease-in);  
+                } 
+            }
+        }
+    }
 }
 .logo{
     a{
@@ -94,27 +111,36 @@
 }
 
 #navigation {
+
     @include outer-container;
     position: relative;
     @media screen and (max-width:$screen-md){
-        @include transition(all 300ms ease-in);
-        height:0;
+
         padding-left:1em;
         padding-right:1em;
-        overflow:hidden;
+        li {
+            @include transition(all 300ms ease-in);  
+            height:0; 
+            overflow:hidden;
+        }
         &.show{
-            @include transition(all 300ms ease-out);
+            @include transition(all 300ms ease-in);  
             padding-top:1em;
             padding-bottom:1em;
             height:auto;
+            li {
+                @include transition(all 300ms ease-out);
+                height:66px;
+            }
         }
     }
     @media screen and (min-width:$screen-md){
+        
         @include display(flex);
-        @include align-items(center);
+        @include align-items(flex-end);
         @include justify-content(space-between);
         height:100%;
-        padding:3em 0;
+        padding:1em 0;
         .sticky & {
             @include transition(all 500ms ease-in);
             padding:1em 0;
@@ -123,87 +149,85 @@
                 padding:3em 0; 
             }
         }
-        ul.level_2{display:none;}
-        &:hover{
-            @include align-items(flex-end);
-            cursor: pointer;
-            #main-nav {
-                .level_2{
-                    display:block;
-                }
-            }
-        }
     }
 }
 
 #main-nav {
-    #page-header & {
-        @extend .uppercase;
-        li {
-            @media screen and (max-width:$screen-md){
-                display:block;
-
-                > span,
-                > a{
-                    display:block;
-                    padding:1em 0;
-                    border-bottom:1px solid white;
-                }
-                &:last-child{
-                    a, span{
-                        border:0;
-                    }
+    @extend .uppercase;
+    li {
+        &, & > a {
+            width:100%;
+            display:block;
+        }
+        
+    }
+    li {
+        @media screen and (max-width:$screen-md){
+            display:block;
+            > span,
+            > a{
+                padding:1em 0;
+                border-bottom:1px solid white;
+            }
+            &:last-child{
+                a, span{
+                    border:0;
                 }
             }
         }
-        .level_1{
-            width: 100%;
-            @media screen and (max-width:$screen-md){
-                margin-bottom:1em;
-                .level_2{
-                    @media screen and (max-width:$screen-md){
-                        height:0;
-                        overflow:hidden;
-                    }
-                }
-                li:hover, li:focus{
-                    .level_2{
-                        height:auto;
-                        @include transition(all 2s ease-out);
-                        overflow: no-content;
-                    }
+    }
+    .level_1{
+        width: 100%;
+        a {
+            padding:0 3em;
+            word-break: normal;
+        }
+
+        
+        @media screen and (max-width:$screen-md){
+            margin-bottom:1em;
+            .level_2{
+
+                @media screen and (max-width:$screen-md){
+                    height:0;
+                    overflow:hidden;
                 }
             }
-            @media screen and (min-width:$screen-md){
-                @include display(flex);
-                > li {
-                    @include flex-basis(100%/3); 
-                    position:relative;
-                    padding: 0 3em;
-                    border-right:1px solid lighten($darkGrayColor,25%);
-                    &:last-child{
-                        border:0;
-                    }
-                }
+            li:hover, li:focus{
                 .level_2{
-                    > li{
-                        &:hover{
-                            @media screen and (min-width:$screen-md){
-                                width:200%;
+                    height:auto;
+                    @include transition(all 2s ease-out);
+                    overflow: no-content;
+                }
+            }
+        }
+        @media screen and (min-width:$screen-md){
+            @include display(flex);
+            > li {
+                @include flex-basis(100%/3); 
+                position:relative;
+                border-right:1px solid lighten($darkGrayColor,25%);
+                &:last-child{
+                    border:0;
+                }
+            }
+            .level_2{
+                
+                > li{
+                    display:block;
+                    &:hover{
+                        @media screen and (min-width:$screen-md){
+                            .level_3{
                                 display:block;
-                                .level_3{
-                                    display:block;
-                                    @include show-level_3;
-                                }
+                                @include show-level_3;
                             }
                         }
                     }
                 }
-                .level_3{
-                    display:none;
-                }
             }
-
+            .level_3{
+                display:none;
+            }
         }
 
     }
@@ -232,34 +256,13 @@
     }
     .mod_customnav ul.level_1 li.first{
         a, span {@extend %footerHeaderstyle;}
-        
+
         @media screen and (max-width:$screen-sm - 1){
-                padding-top:$defaultPadding/2;
-                margin-top:$defaultPadding/2;
-                border-top:1px solid $defaultColor;
-                &:first-child > a,:first-child > span{border:0; }
+            padding-top:$defaultPadding/2;
+            margin-top:$defaultPadding/2;
+            border-top:1px solid $defaultColor;
+            &:first-child > a,:first-child > span{border:0; }
         }
-    }
-    ul.level_1{
-/*        > li.submenu > a,
-        > li.submenu > span{
-            @extend %footerHeaderstyle;
-        }*/
-
-/*        @media screen and (max-width:$screen-sm - 1){
-            > li.submenu > a,
-            > li.submenu > span{
-                padding-top:$defaultPadding/2;
-                margin-top:$defaultPadding/2;
-                border-top:1px solid $defaultColor;
-
-            }
-            > li.submenu:first-child > a,
-                > li.submenu:first-child > span{
-                border:0; 
-            }
-        }*/
-
     }
     hr {
         margin-bottom: 2em;

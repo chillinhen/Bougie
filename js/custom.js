@@ -22,7 +22,18 @@
             $(this).click(function(){
                 $(this).toggleClass('open');
             });
-        });    
+        });  
+        // Navigation Efects
+        
+         $('.nav-wrapper').on('mouseenter',function(){
+             $(this).children('nav').children('.level_1').toggleClass('open');
+         });
+        $('.nav-wrapper').on('mouseleave',function(){
+            setTimeout(function () {
+                $(this).children('nav').children('.level_1').removeClass('open')
+            },20);
+        });
+
         // responsive Nav Button
         $('.nav-responsive').click(function(){
             $('#navigation').toggleClass('show');

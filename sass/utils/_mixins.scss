@@ -59,7 +59,8 @@
     bottom:-3em;
     z-index: 10;
     width:101%;
-    padding:3em 1em;
+    padding:3em 0em;
+    a {padding:0 1em;}
 }
 @mixin house-icon{
     background:{
