@@ -1,17 +1,23 @@
+body > section {
+    //Responsive Padding
+    @media screen and (max-device-width:$screen-sm){
+        padding:1em;
+    }
+}
 [class*="container"]{
     &.divider{
         padding:0 !important;
     }
 }
 .container {
-    @media screen and (max-width:$screen-sm){
-        padding:1em;
-    }
+
     @media screen and (min-device-width:$screen-sm) and (max-device-width:$screen-md) and (orientation:landscape){
         @include outer-container(980px);
+
     }
     @media screen and (min-width:$screen-pad-landscape){
         @include outer-container(1024px);
+
     }
     @media screen and (min-width:$screen-lg){
         @include outer-container;
@@ -151,10 +157,11 @@
             [class*="text-teaser"]{
                 margin:2*$defaultPadding $defaultPadding/2; 
             }
-            
+
             &.collapse{
                 margin-top: 0;
             }
         } 
     }
 }
+

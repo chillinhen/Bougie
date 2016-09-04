@@ -76,7 +76,7 @@
 }
 .nav-wrapper{
     @media screen and (min-width:$screen-md){
-        @include flex-basis(60%);
+        @include flex-basis(70%);
         @include display(flex);
         @include justify-content(space-between);
         padding:2em 0;
@@ -111,6 +111,9 @@
             }
         }
     }
+    @media screen and (min-width:$screen-lg){
+        @include flex-basis(60%);
+    }
 }
 .logo{
     a{
@@ -136,6 +139,8 @@
     @media screen and (max-width:$screen-md){
         padding-left:1em;
         padding-right:1em;
+        height:0;
+        overflow:hidden;
         .level_1{
             &.open{
                 margin:2em 0;
@@ -151,24 +156,25 @@
             padding-bottom:1em;
             height:auto;
             overflow:scroll;
+            .level_3{
+                padding:0 1em;
+            }
             .level_1{
                 > li{
                     @include transition(all 300ms ease-out);
                     height:66px;
                 } 
             }
-            li.hover{
+            li.hover, li.active, li.forward{
                 height:auto !important;
                 
                 > ul > li {
                     @include transition(all 300ms ease-out);
-                    height:44px;
+                    height:33px;
                     overflow:auto;
+                    font-size:$rem-base;
                 }
-                .level_3{}
-            }
-            li.active, li.forward{
-                background:red;
+                
             }
 
         }
@@ -201,36 +207,19 @@
 
     }
     li {
-        /*        @media screen and (max-width:$screen-md){
-                    display:block;
-                    > span,
-                    > a{
-                        padding:1em 0;
-                        border-bottom:1px solid white;
-                    }
-                    &:last-child{
-                        a, span{
-                            border:0;
-                        }
-                    }
-                }*/
+        @media screen and (max-width:$screen-md){
+            a, span{
+                padding:1em 0;
+                border-bottom:1px solid white;
+            }
+            &:last-child{
+                a, span{border:0;}
+            }
+                    
+        }
     }
     .level_1{
         width: 100%;     
-        /*        @media screen and (max-width:$screen-md){
-                    margin-bottom:1em;
-                    .level_2{
-                        height:0;
-                        overflow:hidden;
-                    }
-                    li:hover, li:focus{
-                        .level_2{
-                            height:auto;
-                            @include transition(all 2s ease-out);
-                            overflow: no-content;
-                        }
-                    }
-                }*/
         @media screen and (min-width:$screen-md){
             @include display(flex);
             > li {

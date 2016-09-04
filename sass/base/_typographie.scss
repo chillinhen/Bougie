@@ -99,6 +99,9 @@ h6{
     .full-width .mod_article &{
         margin-bottom: .3em;
     }
+    @media screen and (max-width:$screen-xs){
+        word-wrap:break-word;
+    }
 }
 h1 {
     font-size:4.3 * $rem-base;
@@ -106,6 +109,9 @@ h1 {
     font-weight:300;
     &.logo{
         margin:0;
+    }
+    @media screen and (max-width:$screen-xs){
+        font-size:3 * $rem-base;
     }
 
 }
