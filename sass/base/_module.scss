@@ -1,6 +1,5 @@
 .mod_breadcrumb{
     font-size:$rem-base * .875;
-    padding-top:$defaultPadding;
     li {
         display:inline-block;
         &:after{
@@ -94,7 +93,7 @@
 
 .mod_article{
     .downloads & .flexbox{
-        margin-top:2 * $defaultMargin;
+        margin:2 * $defaultMargin 0;
     }
     .team & .flexbox.container:first-child {
         margin:0 7.5vW;
@@ -168,7 +167,7 @@
     &[class*="text-teaser"]{
         background-color: $lighterbgColor;
         padding:0 $defaultPadding/2 $defaultPadding/2;
-        margin:0 $defaultPadding/2;
+/*        margin:0 $defaultPadding/2;*/
         overflow:hidden;
 
         figure{
@@ -179,7 +178,7 @@
     }
     &.text-teaser1{
         padding:$defaultPadding/2;
-        margin:$defaultPadding/2;
+/*        margin:$defaultPadding/2;*/
         figure{
             &.float_above{
                 margin-right:auto;

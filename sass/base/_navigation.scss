@@ -49,7 +49,15 @@
 #page-header{
     background:$baseColor;
     *{color:white;} 
+    #top-head{
+        @media screen and (min-width:$screen-md){
+            height:55px;  
+        }
+
+        border-width: 0 0 0 0;
+    }
     &.sticky{
+        @include transition(all 300ms ease-in);  
         position: fixed;
         top:0;
         left:0;
@@ -58,7 +66,8 @@
 
         #top-head{
             @media screen and (min-width:$screen-md){
-                borer-top:5px solid $blackColor;
+                @include transition(all 300ms ease-in);  
+                border-top:5px solid $blackColor;
                 height:0;
                 overflow:hidden;
             }
@@ -70,16 +79,26 @@
         @include flex-basis(60%);
         @include display(flex);
         @include justify-content(space-between);
-        > .mod_navigation{
-/*            @include flex(2);*/
+        padding:2em 0;
+        > #main-nav{
+            @include flex(2);
+            ul.level_1{
+                > li > a,
+                > li > span {
+                    padding: 0 3em;
+                }
+                .level_2{
+                    > li  > a,
+                    > li > span {
+                        padding: 0 3em;
+                    }
+                }
+            }
         }
         ul.level_1{
-            padding:2em 0;
-            .level_2{
-                overflow: hidden;
-                height:0;
-                @include transition(all 300ms ease-in);  
 
+            .level_2{
+                @include collapse;
             }
             &:hover{
                 cursor:pointer;
@@ -115,27 +134,47 @@
     @include outer-container;
     position: relative;
     @media screen and (max-width:$screen-md){
-
         padding-left:1em;
         padding-right:1em;
-        li {
-            @include transition(all 300ms ease-in);  
-            height:0; 
-            overflow:hidden;
+        .level_1{
+            &.open{
+                margin:2em 0;
+            }
+            li {
+                @include transition(all 300ms ease-in);
+                height:0; 
+                overflow:hidden;}
         }
         &.show{
             @include transition(all 300ms ease-in);  
             padding-top:1em;
             padding-bottom:1em;
             height:auto;
-            li {
-                @include transition(all 300ms ease-out);
-                height:66px;
+            overflow:scroll;
+            .level_1{
+                > li{
+                    @include transition(all 300ms ease-out);
+                    height:66px;
+                } 
             }
+            li.hover{
+                height:auto !important;
+                
+                > ul > li {
+                    @include transition(all 300ms ease-out);
+                    height:44px;
+                    overflow:auto;
+                }
+                .level_3{}
+            }
+            li.active, li.forward{
+                background:red;
+            }
+
         }
     }
     @media screen and (min-width:$screen-md){
-        
+
         @include display(flex);
         @include align-items(flex-end);
         @include justify-content(space-between);
@@ -143,10 +182,10 @@
         padding:1em 0;
         .sticky & {
             @include transition(all 500ms ease-in);
-            padding:1em 0;
+            padding:0;
             &:hover{
                 @include transition(all 500ms ease-in);
-                padding:3em 0; 
+                padding:0; 
             }
         }
     }
@@ -155,52 +194,43 @@
 #main-nav {
     @extend .uppercase;
     li {
-        &, & > a {
+        &, & > a, & > span {
             width:100%;
             display:block;
         }
-        
+
     }
     li {
-        @media screen and (max-width:$screen-md){
-            display:block;
-            > span,
-            > a{
-                padding:1em 0;
-                border-bottom:1px solid white;
-            }
-            &:last-child{
-                a, span{
-                    border:0;
-                }
-            }
-        }
+        /*        @media screen and (max-width:$screen-md){
+                    display:block;
+                    > span,
+                    > a{
+                        padding:1em 0;
+                        border-bottom:1px solid white;
+                    }
+                    &:last-child{
+                        a, span{
+                            border:0;
+                        }
+                    }
+                }*/
     }
     .level_1{
-        width: 100%;
-        a {
-            padding:0 3em;
-            word-break: normal;
-        }
-
-        
-        @media screen and (max-width:$screen-md){
-            margin-bottom:1em;
-            .level_2{
-
-                @media screen and (max-width:$screen-md){
-                    height:0;
-                    overflow:hidden;
-                }
-            }
-            li:hover, li:focus{
-                .level_2{
-                    height:auto;
-                    @include transition(all 2s ease-out);
-                    overflow: no-content;
-                }
-            }
-        }
+        width: 100%;     
+        /*        @media screen and (max-width:$screen-md){
+                    margin-bottom:1em;
+                    .level_2{
+                        height:0;
+                        overflow:hidden;
+                    }
+                    li:hover, li:focus{
+                        .level_2{
+                            height:auto;
+                            @include transition(all 2s ease-out);
+                            overflow: no-content;
+                        }
+                    }
+                }*/
         @media screen and (min-width:$screen-md){
             @include display(flex);
             > li {
@@ -212,7 +242,7 @@
                 }
             }
             .level_2{
-                
+
                 > li{
                     display:block;
                     &:hover{

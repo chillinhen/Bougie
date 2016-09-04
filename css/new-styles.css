@@ -40,6 +40,9 @@ html {
 
 /*** Mixins ***/
 /*** Mixins ***/
+[class*="container"].divider {
+  padding: 0 !important; }
+
 @media screen and (max-width: 768px) {
   .container {
     padding: 1em; } }
@@ -74,11 +77,6 @@ html {
   .footer-data > .container
   .sitemap-footer > .container {
     padding: 2em; } }
-.page-content .container:not(.mod_breadcrumb) {
-  padding-top: 4em;
-  padding-bottom: 4em; }
-.container.divider {
-  padding: 0 !important; }
 
 @media screen and (min-width: 1200px) {
   .container1 {
@@ -212,6 +210,16 @@ html {
     width: 25%;
     float: left; } }
 
+.page-content .mod_breadcrumb, .page-head .mod_breadcrumb {
+  padding: 2em 0 4em 0; }
+body:not(.home) .page-content > .mod_article:not(.first), body:not(.home) .page-head > .mod_article:not(.first) {
+  margin-top: 4em;
+  margin-bottom: 4em; }
+  body:not(.home) .page-content > .mod_article:not(.first) [class*="text-teaser"], body:not(.home) .page-head > .mod_article:not(.first) [class*="text-teaser"] {
+    margin: 4em 1em; }
+  body:not(.home) .page-content > .mod_article:not(.first).collapse, body:not(.home) .page-head > .mod_article:not(.first).collapse {
+    margin-top: 0; }
+
 * {
   box-sizing: border-box; }
   *::-moz-selection {
@@ -273,16 +281,21 @@ hr {
 .white-text a.more-link, .mod_newslist .panel:first-child a.more-link, .white-text .mod_newslist .panel p.more a, .mod_newslist .panel p.more .white-text a, .mod_newslist .panel:first-child p.more a {
   color: #ffffff; }
 
-.gold-text, [class*="ce_"] ul:not([class*="cols_"]) li h2, [class*="ce_"] ul:not([class*="cols_"]) li h3, [class*="ce_"] ul:not([class*="cols_"]) li h4, [class*="ce_"] ul:not([class*="cols_"]) li strong, .gold-text *, [class*="ce_"] ul:not([class*="cols_"]) li h2 *, [class*="ce_"] ul:not([class*="cols_"]) li h3 *, [class*="ce_"] ul:not([class*="cols_"]) li h4 *, [class*="ce_"] ul:not([class*="cols_"]) li strong * {
+.gold-text, [class*="ce_"] ul:not([class*="cols_"]) li h2, [class*="ce_"] ul:not([class*="cols_"]) li .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead [class*="ce_"] ul:not([class*="cols_"]) li strong, [class*="ce_"] ul:not([class*="cols_"]) li h3, [class*="ce_"] ul:not([class*="cols_"]) li h4, [class*="ce_"] ul:not([class*="cols_"]) li strong, .gold-text *, [class*="ce_"] ul:not([class*="cols_"]) li h2 *, [class*="ce_"] ul:not([class*="cols_"]) li .newsletter .widget-headline .lead strong *, .newsletter .widget-headline .lead [class*="ce_"] ul:not([class*="cols_"]) li strong *, [class*="ce_"] ul:not([class*="cols_"]) li h3 *, [class*="ce_"] ul:not([class*="cols_"]) li h4 *, [class*="ce_"] ul:not([class*="cols_"]) li strong * {
   color: #977f43 !important; }
 
 .blue-text, h1.blue-text,
 h2.blue-text,
+.newsletter .widget-headline .lead strong.blue-text,
 h3.blue-text,
 h4.blue-text,
 h5.blue-text,
+.blue-text.smaller,
 h6.blue-text {
   color: #354a73 !important; }
+
+.dark-text, .dark-text * {
+  color: #000000 !important; }
 
 [class*="Accent"] strong {
   padding: 0.5em 1em;
@@ -291,7 +304,7 @@ h6.blue-text {
   display: inline-block; }
 .sidebar [class*="Accent"].info-box {
   padding: 2.8em 0; }
-  .sidebar [class*="Accent"].info-box > h1, .sidebar [class*="Accent"].info-box > h2, .sidebar [class*="Accent"].info-box > h3, .sidebar [class*="Accent"].info-box > h4, .sidebar [class*="Accent"].info-box > h5, .sidebar [class*="Accent"].info-box > h6, .sidebar [class*="Accent"].info-box > p {
+  .sidebar [class*="Accent"].info-box > h1, .sidebar [class*="Accent"].info-box > h2, .sidebar .newsletter .widget-headline .lead [class*="Accent"].info-box > strong, .newsletter .widget-headline .lead .sidebar [class*="Accent"].info-box > strong, .sidebar [class*="Accent"].info-box > h3, .sidebar [class*="Accent"].info-box > h4, .sidebar [class*="Accent"].info-box > h5, .sidebar [class*="Accent"].info-box > .smaller, .sidebar [class*="Accent"].info-box > h6, .sidebar [class*="Accent"].info-box > p {
     margin-left: 1.4em;
     margin-right: 1.4em; }
   .sidebar [class*="Accent"].info-box > p:last-of-type {
@@ -303,9 +316,8 @@ h6.blue-text {
 
 .blueAccent {
   background: #354a73; }
-  .newsletter .blueAccent {
-    background-color: #9aa5b9;
-    background-color: rgba(53, 74, 115, 0.5); }
+  .blueAccent strong {
+    background: #354a73; }
   .sidebar .blueAccent.info-box {
     background: #354a73; }
     .sidebar .blueAccent.info-box, .sidebar .blueAccent.info-box * {
@@ -317,6 +329,7 @@ h6.blue-text {
     background-color: #9aa5b9;
     background-color: rgba(53, 74, 115, 0.5); }
   .blueAccent1 strong {
+    background: #354a73;
     font-weight: 500; }
     @media screen and (max-width: 992px) {
       .blueAccent1 strong {
@@ -335,6 +348,7 @@ h6.blue-text {
     background-color: gray;
     background-color: rgba(0, 0, 0, 0.5); }
   .blackAccent strong {
+    background: #000000;
     padding: 1em 12em;
     font-weight: 500; }
   .sidebar .blackAccent.info-box {
@@ -601,11 +615,12 @@ h6.blue-text {
       /** same size/height as badge-style ***/ }
 
 .skew .textPanel p:first-child, .black-headline h1 em, .black-headline
-h2 em, .black-headline
+h2 em, .black-headline .newsletter .widget-headline .lead strong em, .newsletter .widget-headline .lead .black-headline strong em, .black-headline
 h3 em, .black-headline
 h4 em, .black-headline
 h5 em, .black-headline
-h6 em, h1 + p, h2 + p, .info-box p, blockquote p, .lead, .bg-layer .textPanel, .widget-headline > p {
+.smaller em, .black-headline
+h6 em, h1 + p, h2 + p, .newsletter .widget-headline .lead strong + p, .info-box p, blockquote p, .lead, .bg-layer .textPanel, .widget-headline > p {
   font-size: 19.6px;
   line-height: 1.5;
   margin: 2em 0; }
@@ -614,10 +629,11 @@ dt, table th, strong {
   font-weight: 600; }
 
 .sitemap-footer h1, .sitemap-footer
-h2, .sitemap-footer
+h2, .sitemap-footer .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .sitemap-footer strong, .sitemap-footer
 h3, .sitemap-footer
 h4, .sitemap-footer
 h5, .sitemap-footer
+.smaller, .sitemap-footer
 h6, .sitemap-footer .mod_customnav ul.level_1 li.first a, .sitemap-footer .mod_customnav ul.level_1 li.first span {
   font-size: 19.6px;
   font-weight: 300;
@@ -638,9 +654,11 @@ body {
 
 h1,
 h2,
+.newsletter .widget-headline .lead strong,
 h3,
 h4,
 h5,
+.smaller,
 h6 {
   margin: 0 0 .5em 0;
   padding: 0;
@@ -649,124 +667,148 @@ h6 {
   font-weight: 300; }
   h1 a,
   h2 a,
+  .newsletter .widget-headline .lead strong a,
   h3 a,
   h4 a,
   h5 a,
+  .smaller a,
   h6 a {
     text-decoration: none; }
   .footer-data h1, .footer-data
-  h2, .footer-data
+  h2, .footer-data .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .footer-data strong, .footer-data
   h3, .footer-data
   h4, .footer-data
   h5, .footer-data
+  .smaller, .footer-data
   h6 {
     display: none; }
   .ce_text h1, .ce_text
-  h2, .ce_text
+  h2, .ce_text .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .ce_text strong, .ce_text
   h3, .ce_text
   h4, .ce_text
   h5, .ce_text
+  .smaller, .ce_text
   h6 {
     margin-bottom: 0; }
   .info-box h1, .info-box
-  h2, .info-box
+  h2, .info-box .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .info-box strong, .info-box
   h3, .info-box
   h4, .info-box
   h5, .info-box
+  .smaller, .info-box
   h6 {
     text-transform: uppercase;
     margin-bottom: 0.7em;
     font-size: 42px; }
   .text-teaser h1, .text-teaser
-  h2, .text-teaser
+  h2, .text-teaser .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .text-teaser strong, .text-teaser
   h3, .text-teaser
   h4, .text-teaser
   h5, .text-teaser
+  .smaller, .text-teaser
   h6 {
     color: #262626;
     margin: 1em 0; }
     .text-teaser h1 img, .text-teaser
-    h2 img, .text-teaser
+    h2 img, .text-teaser .newsletter .widget-headline .lead strong img, .newsletter .widget-headline .lead .text-teaser strong img, .text-teaser
     h3 img, .text-teaser
     h4 img, .text-teaser
     h5 img, .text-teaser
+    .smaller img, .text-teaser
     h6 img {
       margin-right: 21px; }
   .team-teaser h1 img, .team-teaser
-  h2 img, .team-teaser
+  h2 img, .team-teaser .newsletter .widget-headline .lead strong img, .newsletter .widget-headline .lead .team-teaser strong img, .team-teaser
   h3 img, .team-teaser
   h4 img, .team-teaser
   h5 img, .team-teaser
+  .smaller img, .team-teaser
   h6 img {
     margin-right: 1em; }
   @media screen and (min-device-width: 480px) {
     .team-teaser h1, .team-teaser
-    h2, .team-teaser
+    h2, .team-teaser .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .team-teaser strong, .team-teaser
     h3, .team-teaser
     h4, .team-teaser
     h5, .team-teaser
+    .smaller, .team-teaser
     h6 {
       opacity: 1;
       margin-left: 65px;
       margin-top: 2em; }
     .team-teaser h1 ~ p, .team-teaser
-    h2 ~ p, .team-teaser
+    h2 ~ p, .team-teaser .newsletter .widget-headline .lead strong ~ p, .newsletter .widget-headline .lead .team-teaser strong ~ p, .team-teaser
     h3 ~ p, .team-teaser
     h4 ~ p, .team-teaser
     h5 ~ p, .team-teaser
+    .smaller ~ p, .team-teaser
     h6 ~ p {
       margin: 1em 105px; } }
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
     .panel h1, .panel
-    h2, .panel
+    h2, .panel .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .panel strong, .panel
     h3, .panel
     h4, .panel
     h5, .panel
+    .smaller, .panel
     h6 {
       font-size: 15vW; } }
   @media screen and (max-device-width: 600px) and (orientation: landscape) {
     .panel h1, .panel
-    h2, .panel
+    h2, .panel .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .panel strong, .panel
     h3, .panel
     h4, .panel
     h5, .panel
+    .smaller, .panel
     h6 {
       font-size: 15vW; } }
   @media screen and (min-device-width: 992px) {
     .panel h1, .panel
-    h2, .panel
+    h2, .panel .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .panel strong, .panel
     h3, .panel
     h4, .panel
     h5, .panel
+    .smaller, .panel
     h6 {
       font-size: 42px; } }
   .black-headline h1, .black-headline
-  h2, .black-headline
+  h2, .black-headline .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .black-headline strong, .black-headline
   h3, .black-headline
   h4, .black-headline
   h5, .black-headline
+  .smaller, .black-headline
   h6 {
     background: #000000;
     color: #977f43;
     padding: .5em;
     margin: 0 10vW 1em 10vW; }
     .black-headline h1 em, .black-headline
-    h2 em, .black-headline
+    h2 em, .black-headline .newsletter .widget-headline .lead strong em, .newsletter .widget-headline .lead .black-headline strong em, .black-headline
     h3 em, .black-headline
     h4 em, .black-headline
     h5 em, .black-headline
+    .smaller em, .black-headline
     h6 em {
       color: #ffffff !important;
       padding-top: .5em;
       display: block;
       font-style: normal; }
   .bg-layer h1, .bg-layer
-  h2, .bg-layer
+  h2, .bg-layer .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .bg-layer strong, .bg-layer
   h3, .bg-layer
   h4, .bg-layer
   h5, .bg-layer
+  .smaller, .bg-layer
   h6 {
     color: #ffffff !important; }
+  .full-width .mod_article h1, .full-width .mod_article
+  h2, .full-width .mod_article .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .full-width .mod_article strong, .full-width .mod_article
+  h3, .full-width .mod_article
+  h4, .full-width .mod_article
+  h5, .full-width .mod_article
+  .smaller, .full-width .mod_article
+  h6 {
+    margin-bottom: .3em; }
 
 h1 {
   font-size: 60.2px;
@@ -775,12 +817,12 @@ h1 {
   h1.logo {
     margin: 0; }
 
-h2 {
+h2, .newsletter .widget-headline .lead strong {
   font-size: 42px;
   line-height: 1;
   font-weight: 300; }
 
-.bg-layer h1, .bg-layer h2 {
+.bg-layer h1, .bg-layer h2, .bg-layer .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead .bg-layer strong {
   font-size: 30.1px; }
 
 h3, h4 {
@@ -788,7 +830,7 @@ h3, h4 {
   line-height: 1;
   font-weight: 300; }
 
-h5, h6 {
+h5, .smaller, h6 {
   font-size: 19.999px;
   line-height: 165%;
   font-weight: 400;
@@ -1004,7 +1046,15 @@ body[class*="architektur"] input[type="submit"].button {
   background: #354a73; }
   #page-header * {
     color: white; }
+  #page-header #top-head {
+    border-width: 0 0 0 0; }
+    @media screen and (min-width: 992px) {
+      #page-header #top-head {
+        height: 55px; } }
   #page-header.sticky {
+    -webkit-transition: all 300ms ease-in;
+    -moz-transition: all 300ms ease-in;
+    transition: all 300ms ease-in;
     position: fixed;
     top: 0;
     left: 0;
@@ -1012,7 +1062,10 @@ body[class*="architektur"] input[type="submit"].button {
     z-index: 999999; }
     @media screen and (min-width: 992px) {
       #page-header.sticky #top-head {
-        borer-top: 5px solid #000000;
+        -webkit-transition: all 300ms ease-in;
+        -moz-transition: all 300ms ease-in;
+        transition: all 300ms ease-in;
+        border-top: 5px solid #000000;
         height: 0;
         overflow: hidden; } }
 
@@ -1037,24 +1090,35 @@ body[class*="architektur"] input[type="submit"].button {
     -ms-justify-content: space-between;
     -o-justify-content: space-between;
     justify-content: space-between;
-    -ms-flex-pack: justify; }
-    .nav-wrapper > .mod_navigation {
-      /*            @include flex(2);*/ }
-    .nav-wrapper ul.level_1 {
-      padding: 2em 0; }
-      .nav-wrapper ul.level_1 .level_2 {
-        overflow: hidden;
-        height: 0;
-        -webkit-transition: all 300ms ease-in;
-        -moz-transition: all 300ms ease-in;
-        transition: all 300ms ease-in; }
-      .nav-wrapper ul.level_1:hover {
-        cursor: pointer; }
-      .nav-wrapper ul.level_1.open .level_2 {
-        height: 180px;
-        -webkit-transition: all 300ms ease-in;
-        -moz-transition: all 300ms ease-in;
-        transition: all 300ms ease-in; } }
+    -ms-flex-pack: justify;
+    padding: 2em 0; }
+    .nav-wrapper > #main-nav {
+      -webkit-box-flex: 2;
+      -moz-box-flex: 2;
+      box-flex: 2;
+      -webkit-flex: 2;
+      -moz-flex: 2;
+      -ms-flex: 2;
+      flex: 2; }
+      .nav-wrapper > #main-nav ul.level_1 > li > a,
+      .nav-wrapper > #main-nav ul.level_1 > li > span {
+        padding: 0 3em; }
+      .nav-wrapper > #main-nav ul.level_1 .level_2 > li > a,
+      .nav-wrapper > #main-nav ul.level_1 .level_2 > li > span {
+        padding: 0 3em; }
+    .nav-wrapper ul.level_1 .level_2 {
+      overflow: hidden;
+      height: 0;
+      -webkit-transition: all 300ms ease-in;
+      -moz-transition: all 300ms ease-in;
+      transition: all 300ms ease-in; }
+    .nav-wrapper ul.level_1:hover {
+      cursor: pointer; }
+    .nav-wrapper ul.level_1.open .level_2 {
+      height: 180px;
+      -webkit-transition: all 300ms ease-in;
+      -moz-transition: all 300ms ease-in;
+      transition: all 300ms ease-in; } }
 
 .logo a {
   display: block; }
@@ -1085,7 +1149,9 @@ body[class*="architektur"] input[type="submit"].button {
     #navigation {
       padding-left: 1em;
       padding-right: 1em; }
-      #navigation li {
+      #navigation .level_1.open {
+        margin: 2em 0; }
+      #navigation .level_1 li {
         -webkit-transition: all 300ms ease-in;
         -moz-transition: all 300ms ease-in;
         transition: all 300ms ease-in;
@@ -1097,12 +1163,23 @@ body[class*="architektur"] input[type="submit"].button {
         transition: all 300ms ease-in;
         padding-top: 1em;
         padding-bottom: 1em;
-        height: auto; }
-        #navigation.show li {
+        height: auto;
+        overflow: scroll; }
+        #navigation.show .level_1 > li {
           -webkit-transition: all 300ms ease-out;
           -moz-transition: all 300ms ease-out;
           transition: all 300ms ease-out;
-          height: 66px; } }
+          height: 66px; }
+        #navigation.show li.hover {
+          height: auto !important; }
+          #navigation.show li.hover > ul > li {
+            -webkit-transition: all 300ms ease-out;
+            -moz-transition: all 300ms ease-out;
+            transition: all 300ms ease-out;
+            height: 44px;
+            overflow: auto; }
+        #navigation.show li.active, #navigation.show li.forward {
+          background: red; } }
   @media screen and (min-width: 992px) {
     #navigation {
       display: -webkit-box;
@@ -1136,44 +1213,46 @@ body[class*="architektur"] input[type="submit"].button {
         -webkit-transition: all 500ms ease-in;
         -moz-transition: all 500ms ease-in;
         transition: all 500ms ease-in;
-        padding: 1em 0; }
+        padding: 0; }
         .sticky #navigation:hover {
           -webkit-transition: all 500ms ease-in;
           -moz-transition: all 500ms ease-in;
           transition: all 500ms ease-in;
-          padding: 3em 0; } }
+          padding: 0; } }
 
-#main-nav li, #main-nav li > a {
+#main-nav li, #main-nav li > a, #main-nav li > span {
   width: 100%;
   display: block; }
-@media screen and (max-width: 992px) {
-  #main-nav li {
-    display: block; }
-    #main-nav li > span,
-    #main-nav li > a {
-      padding: 1em 0;
-      border-bottom: 1px solid white; }
-    #main-nav li:last-child a, #main-nav li:last-child span {
-      border: 0; } }
+#main-nav li {
+  /*        @media screen and (max-width:$screen-md){
+              display:block;
+              > span,
+              > a{
+                  padding:1em 0;
+                  border-bottom:1px solid white;
+              }
+              &:last-child{
+                  a, span{
+                      border:0;
+                  }
+              }
+          }*/ }
 #main-nav .level_1 {
-  width: 100%; }
-  #main-nav .level_1 a {
-    padding: 0 3em;
-    word-break: normal; }
-  @media screen and (max-width: 992px) {
-    #main-nav .level_1 {
-      margin-bottom: 1em; } }
-  @media screen and (max-width: 992px) and (max-width: 992px) {
-    #main-nav .level_1 .level_2 {
-      height: 0;
-      overflow: hidden; } }
-  @media screen and (max-width: 992px) {
-      #main-nav .level_1 li:hover .level_2, #main-nav .level_1 li:focus .level_2 {
-        height: auto;
-        -webkit-transition: all 2s ease-out;
-        -moz-transition: all 2s ease-out;
-        transition: all 2s ease-out;
-        overflow: no-content; } }
+  width: 100%;
+  /*        @media screen and (max-width:$screen-md){
+              margin-bottom:1em;
+              .level_2{
+                  height:0;
+                  overflow:hidden;
+              }
+              li:hover, li:focus{
+                  .level_2{
+                      height:auto;
+                      @include transition(all 2s ease-out);
+                      overflow: no-content;
+                  }
+              }
+          }*/ }
   @media screen and (min-width: 992px) {
     #main-nav .level_1 {
       display: -webkit-box;
@@ -1205,8 +1284,10 @@ body[class*="architektur"] input[type="submit"].button {
         z-index: 10;
         width: 101%;
         padding: 3em 0em; }
-        #main-nav .level_1 .level_2 > li:hover .level_3 a {
-          padding: 0 1em; } }
+        #main-nav .level_1 .level_2 > li:hover .level_3 a, #main-nav .level_1 .level_2 > li:hover .level_3 span {
+          padding: 0 1em; }
+        .sticky #main-nav .level_1 .level_2 > li:hover .level_3 {
+          bottom: -2em; } }
   @media screen and (min-width: 992px) {
       #main-nav .level_1 .level_3 {
         display: none; } }
@@ -1277,8 +1358,7 @@ body[class*="architektur"] input[type="submit"].button {
     background-image: url(../icons/you-tube-grey.png); }
 
 .mod_breadcrumb {
-  font-size: 12.25px;
-  padding-top: 2em; }
+  font-size: 12.25px; }
   .mod_breadcrumb li {
     display: inline-block; }
     .mod_breadcrumb li:after {
@@ -1365,7 +1445,7 @@ body[class*="architektur"] input[type="submit"].button {
   padding: 1.4em 0; }
 
 .downloads .mod_article .flexbox, .downloads .mod_article .ce_form .row, .ce_form .downloads .mod_article .row {
-  margin-top: 2.8em; }
+  margin: 2.8em 0; }
 .team .mod_article .flexbox.container:first-child, .team .mod_article .ce_form .container.row:first-child, .ce_form .team .mod_article .container.row:first-child {
   margin: 0 7.5vW; }
 
@@ -1389,7 +1469,7 @@ body[class*="architektur"] input[type="submit"].button {
   padding: 0 0.5em 0.5em 4em;
   margin-bottom: 2em;
   background-image: url(../icons/more-infos-gold.png); }
-  [class*="ce_"] ul:not([class*="cols_"]) li h2, [class*="ce_"] ul:not([class*="cols_"]) li h3, [class*="ce_"] ul:not([class*="cols_"]) li h4, [class*="ce_"] ul:not([class*="cols_"]) li strong {
+  [class*="ce_"] ul:not([class*="cols_"]) li h2, [class*="ce_"] ul:not([class*="cols_"]) li .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead [class*="ce_"] ul:not([class*="cols_"]) li strong, [class*="ce_"] ul:not([class*="cols_"]) li h3, [class*="ce_"] ul:not([class*="cols_"]) li h4, [class*="ce_"] ul:not([class*="cols_"]) li strong {
     font-weight: 300; }
 @media screen and (max-device-width: 600px) and (orientation: landscape) {
   [class*="ce_"].skew, [class*="ce_"].banner {
@@ -1420,13 +1500,13 @@ body[class*="architektur"] input[type="submit"].button {
 [class*="ce_"][class*="text-teaser"] {
   background-color: #fbfafa;
   padding: 0 1em 1em;
-  margin: 0 1em;
+  /*        margin:0 $defaultPadding/2;*/
   overflow: hidden; }
   [class*="ce_"][class*="text-teaser"] figure.float_above {
     margin: -1em 0 1em 0; }
 [class*="ce_"].text-teaser1 {
   padding: 1em;
-  margin: 1em; }
+  /*        margin:$defaultPadding/2;*/ }
   [class*="ce_"].text-teaser1 figure.float_above {
     margin-right: auto;
     margin-left: auto;
@@ -1771,6 +1851,12 @@ input[type="submit"].button {
 
 .widget-headline {
   padding: 0 0 2em 0; }
+  .newsletter .widget-headline .lead {
+    background-color: #9aa5b9;
+    background-color: rgba(53, 74, 115, 0.5);
+    padding: 1em 2em; }
+    .newsletter .widget-headline .lead strong {
+      color: #ffffff; }
   .row + .widget-headline {
     padding-top: 4em; }
   .widget-headline > p {
@@ -1804,6 +1890,8 @@ body {
   background: #ffffff; }
   body.home {
     background: #f2f0f0; }
+  body.two-columns .sidebar {
+    padding-top: 2em; }
 
 #top-head {
   background: #2f2f2f;
@@ -1915,9 +2003,6 @@ body {
   background-image: url("../images/hg_kontakt.jpg");
   background-repeat: no-repeat; }
 
-body.two-columns .page-content {
-  padding: 4em 0; }
-
 /**** Extras *****/
 @media screen and (min-width: 992px) {
   #immo-des-monats > * {
@@ -1934,11 +2019,11 @@ body.two-columns .page-content {
   background-position: top center !important; }
 #banner-mitte .textPanel {
   padding: 10vH 0; }
-#banner-mitte .blueAccent h1, #banner-mitte .blueAccent h2, #banner-mitte .blueAccent h3, #banner-mitte .blueAccent h4, #banner-mitte .blueAccent h5, #banner-mitte .blueAccent h6 {
+#banner-mitte .blueAccent h1, #banner-mitte .blueAccent h2, #banner-mitte .blueAccent .newsletter .widget-headline .lead strong, .newsletter .widget-headline .lead #banner-mitte .blueAccent strong, #banner-mitte .blueAccent h3, #banner-mitte .blueAccent h4, #banner-mitte .blueAccent h5, #banner-mitte .blueAccent .smaller, #banner-mitte .blueAccent h6 {
   margin-bottom: .5em !important; }
-  #banner-mitte .blueAccent h1 strong, #banner-mitte .blueAccent h2 strong, #banner-mitte .blueAccent h3 strong, #banner-mitte .blueAccent h4 strong, #banner-mitte .blueAccent h5 strong, #banner-mitte .blueAccent h6 strong {
+  #banner-mitte .blueAccent h1 strong, #banner-mitte .blueAccent h2 strong, #banner-mitte .blueAccent .newsletter .widget-headline .lead strong strong, .newsletter .widget-headline .lead #banner-mitte .blueAccent strong strong, #banner-mitte .blueAccent h3 strong, #banner-mitte .blueAccent h4 strong, #banner-mitte .blueAccent h5 strong, #banner-mitte .blueAccent .smaller strong, #banner-mitte .blueAccent h6 strong {
     line-height: 0.25; }
-  #banner-mitte .blueAccent h1 ~ *, #banner-mitte .blueAccent h2 ~ *, #banner-mitte .blueAccent h3 ~ *, #banner-mitte .blueAccent h4 ~ *, #banner-mitte .blueAccent h5 ~ *, #banner-mitte .blueAccent h6 ~ * {
+  #banner-mitte .blueAccent h1 ~ *, #banner-mitte .blueAccent h2 ~ *, #banner-mitte .blueAccent .newsletter .widget-headline .lead strong ~ *, .newsletter .widget-headline .lead #banner-mitte .blueAccent strong ~ *, #banner-mitte .blueAccent h3 ~ *, #banner-mitte .blueAccent h4 ~ *, #banner-mitte .blueAccent h5 ~ *, #banner-mitte .blueAccent .smaller ~ *, #banner-mitte .blueAccent h6 ~ * {
     padding-left: 3em;
     font-size: larger; }
 

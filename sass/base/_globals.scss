@@ -68,6 +68,14 @@ hr {
 .blue-text{
     color:$blueColor !important;
 }
+.dark-text {
+     &, &  *{
+        color:$blackColor !important;
+    }
+}
+.smaller{
+    @extend h5;
+}
 [class*="Accent"]{
     strong{
         padding:$defaultPadding/4 $defaultPadding/2;
@@ -95,8 +103,8 @@ hr {
 
 .blueAccent{
     background: $blueColor;
-    .newsletter & {
-        @include alpha-background-color(rgba($blueColor, 0.5), white);
+    strong {
+        background: $blueColor;
     }
     .sidebar &.info-box{
         background: $blueColor;
@@ -110,6 +118,7 @@ hr {
         @include alpha-background-color(rgba($blueColor, 0.5), white);
     }
     strong {
+        background: $blueColor;
         @media screen and (max-width:$screen-md){
             padding: 1em;
         }
@@ -130,6 +139,7 @@ hr {
         @include alpha-background-color(rgba($blackColor, 0.5), white);
     }
     strong {
+        background: $blackColor;
         padding: 1em 12em;
         font-weight: 500;
     }

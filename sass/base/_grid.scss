@@ -1,3 +1,8 @@
+[class*="container"]{
+    &.divider{
+        padding:0 !important;
+    }
+}
 .container {
     @media screen and (max-width:$screen-sm){
         padding:1em;
@@ -13,25 +18,15 @@
     }
 
 
-    
+
     .footer-data > &
     .sitemap-footer  > &{
         @media screen and (max-width:$screen-sm){
             padding:$defaultPadding;
         }   
     }
-
-    .page-content &:not(.mod_breadcrumb){
-        padding:{
-            top:$vertPadding;
-            bottom:$vertPadding;
-        }
-    }
-    &.divider{
-        padding:0 !important;
-    }
-
 }
+
 .container1{
     @media screen and (min-width:$screen-lg){
         max-width: 800px;
@@ -44,6 +39,7 @@
         }
     }
 }
+
 .flexbox{
     @include display(flex);
     .col-1 &,
@@ -129,7 +125,7 @@
         .main, .sidebar{
             padding:0 $defaultPadding;
         }
-        
+
     }
     @media screen and (min-width: $screen-md) {
         .main{
@@ -143,6 +139,22 @@
         }
     }
 }
-
-
-
+//Vertical Padding
+.page-content, .page-head{
+    .mod_breadcrumb{
+        padding:$defaultPadding 0 2* $defaultPadding 0;
+    }
+    body:not(.home) &{
+        > .mod_article:not(.first){
+            margin-top:2*$defaultPadding;
+            margin-bottom:2*$defaultPadding;
+            [class*="text-teaser"]{
+                margin:2*$defaultPadding $defaultPadding/2; 
+            }
+            
+            &.collapse{
+                margin-top: 0;
+            }
+        } 
+    }
+}

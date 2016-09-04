@@ -195,6 +195,16 @@ input[type="submit"]{
 
 .widget-headline{
     padding:0  0 $defaultPadding 0;
+    .newsletter & .lead{
+        @include alpha-background-color(rgba($blueColor, 0.5), white);
+        padding:$defaultPadding/2 $defaultPadding;
+        
+        strong {
+            @extend h2;
+            color:$whiteColor;
+        }
+        
+    }
 
     .row + &{
         padding-top:2 * $defaultPadding;

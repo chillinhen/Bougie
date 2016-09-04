@@ -1,13 +1,20 @@
 body {
     &.home{background:$bgBody;}
-    background: $whiteColor;
+    background: $whiteColor; 
     @extend %reset;
+    
+    &.two-columns{
+        .sidebar{
+            padding-top:$defaultPadding;
+        }
+    }
 }
+
 #top-head{
     background:$darkGrayColor;
     position:relative;
     > .container{
-       
+
         @include display(flex);
         @include align-items(center);
         @media screen and (max-width:$screen-md){
@@ -20,14 +27,14 @@ body {
         font-weight:300;
     }
     @media screen and (max-width:$screen-md){
-       
+
         .claim{display:none;}
         .phone, .mail {
             @include flex(2);
         }
     }
     @media screen and (min-width:$screen-md){
-         padding:0 $horPadding;
+        padding:0 $horPadding;
     }
 }
 .parallax-container{
@@ -55,9 +62,9 @@ body {
                 font-size:1.75 * $rem-base;  
             }
             @media screen and (min-width:$screen-md){
-              font-size:2.15 * $rem-base;  
+                font-size:2.15 * $rem-base;  
             }
-            
+
             font-weight: 300;
         }
         &:first-child{
@@ -84,6 +91,3 @@ body {
     background-image:url("../images/hg_kontakt.jpg");
     background-repeat:no-repeat;
 }
-    body.two-columns .page-content {
-        padding:2 * $defaultPadding 0;
-    }
