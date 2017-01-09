@@ -1,7 +1,7 @@
 (function ($, root, undefined) {
 
     $(function () {
-
+        
         //more infos
         $('a').each(function () {
             var moreLink = $(this).attr('title');
@@ -9,26 +9,48 @@
                 $(this).addClass('more-link');
             }
         });
+
+        // Text/ Team Teaser
+        $('.text-teaser h3').wrapInner('<span></span>');
+        $('.team-teaser h3, .text-teaser h3 span').prepend('<img src="files/layout2016/icons/more-infos-gold.png"/>');
         // social media icons
         $('.social-media li > a, #top-head .mail a, #top-head .phone a').wrapInner('<span></span>');
 
-        //first paragraph is lead 
-//        $('.ce_text').each(function(){
-//            $(this).children('p:first').addClass('lead');
-//        });
+
+        //accordion
+        $('.toggler').each(function(){
+            $(this).click(function(){
+                $(this).toggleClass('open');
+            });
+        });  
+        // Navigation Effects
+        
+         $('.nav-wrapper').on('mouseenter',function(){
+             $(this).children('nav').children('.level_1').toggleClass('open');
+         });
+        $('.nav-wrapper').on('mouseleave',function(){
+            setTimeout(function () {
+                $(this).children('nav').children('.level_1').removeClass('open')
+            },20);
+        });
+
         // responsive Nav Button
         $('.nav-responsive').click(function(){
             $('#navigation').toggleClass('show');
         });
+        var navButtonContainer = $('#navigation [class*="level"] > li');
+        navButtonContainer.bind('touchstart hover', function () {
+            $(this).addClass('hover');
+        });
         // Nav Button
-        var navButton = $('a.submenu');
+        var navButton = $('.submenu > a');
         var tapped = false;
         //navButton.addClass('foo');
         navButton.on("touchstart", function (e) {
             if (!tapped) { //if tap is not set, set up single tap
                 tapped = setTimeout(function () {
                     e.preventDefault();
-                    $(this).siblings('.level_2').addClass('show');
+     
                     //insert things you want to do when single tapped
                 }, 100);   //wait 100ms then run single click code
             } else {    //tapped within 300ms of last tap. double tap
@@ -38,39 +60,28 @@
             }
             e.preventDefault()
         });
-        
-                        var stickyNavTop = $('#page-header').offset().top;
+        //Sticky Navbar
+        var stickyNavTop = $('#page-header').offset().top;
 
-                var stickyNav = function () {
-                    var scrollTop = $(window).scrollTop();
+        var stickyNav = function () {
+            var scrollTop = $(window).scrollTop();
 
-                    if (scrollTop > stickyNavTop) {
-                        $('#page-header').addClass('sticky');
-                    } else {
-                        $('#page-header').removeClass('sticky');
-                    }
-                };
-
-                //stickyNav();
-                //$(window).scroll(stickyNav);
-
-        // responsive
-        $(window).bind("resize", resizeWindow);
-        function resizeWindow(e) {
-            var newWindowWidth = $(window).width();
-
-            // If width width is below 768px, switch to the mobile stylesheet
-            if (newWindowWidth < 768) {
-
-
+            if (scrollTop > stickyNavTop) {
+                $('#page-header').addClass('sticky');
             } else {
-                //scrolling
-
+                $('#page-header').removeClass('sticky');
             }
+        };
 
-        }
-
-
+        stickyNav();
+        $(window).scroll(stickyNav);
+        
+        //Grid
+        $('.page-content > .mod_article.first > .banner')
+                .parent('.mod_article').next('[class*="mod_"]')
+                .addClass('collapse');
+        
+           
 
     });
 

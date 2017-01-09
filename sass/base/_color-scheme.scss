@@ -67,6 +67,13 @@ body[class*="immobilien"]{
             @include button-style($blueColor);
         }
     }
+    .newsletter{
+        input[type="submit"]{
+            &.button{
+                @include button-style($blackColor);
+            }
+        }
+    }
 }
 body[class*="architektur"]{
     .skew .textPanel{background-image: url(../images/bg-skew-black.png)}
@@ -77,3 +84,4 @@ body[class*="architektur"]{
         }
     }
 }
+

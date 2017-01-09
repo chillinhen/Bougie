@@ -1,30 +1,51 @@
-.container {
-    @media screen and (max-width:$screen-sm){
-        
+body > section {
+    //Responsive Padding
+    @media screen and (max-device-width:$screen-sm){
+        padding:1em;
     }
+}
+[class*="container"]{
+    &.divider{
+        padding:0 !important;
+    }
+}
+.container {
+
     @media screen and (min-device-width:$screen-sm) and (max-device-width:$screen-md) and (orientation:landscape){
         @include outer-container(980px);
+
     }
     @media screen and (min-width:$screen-pad-landscape){
         @include outer-container(1024px);
+
     }
     @media screen and (min-width:$screen-lg){
         @include outer-container;
     }
-    
 
-    .page-content .mod_article > &,
+
+
     .footer-data > &
     .sitemap-footer  > &{
-        padding:$defaultPadding;
+        @media screen and (max-width:$screen-sm){
+            padding:$defaultPadding;
+        }   
     }
-
-    body:not(.home) .mod_article > &:not(.mod_breadcrumb){
-        padding-top:$vertPadding;
-        padding-bottom:$vertPadding;
-    }
-
 }
+
+.container1{
+    @media screen and (min-width:$screen-lg){
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        &:after{
+            clear: both;
+            content: "";
+            display: table;
+        }
+    }
+}
+
 .flexbox{
     @include display(flex);
     .col-1 &,
@@ -69,42 +90,78 @@
             @include flex-basis(100%/12);
         }
         .col-2{
-           @include flex-basis(100%/6);
+            @include flex-basis(100%/6);
         }
         .col-3{
-          @include flex-basis(25%);
+            @include flex-basis(25%);
 
         }
         .col-4{
-           @include flex-basis(100%/3);
+            @include flex-basis(100%/3);
         }
         .col-5{
-           @include flex-basis((100%/12)*5);
+            @include flex-basis((100%/12)*5);
         }
         .col-6{
             @include flex-basis(50%);
         }
         .col-7{
-          @include flex-basis((100%/12)*7);
+            @include flex-basis((100%/12)*7);
         }
         .col-8{
             @include flex-basis(100%/3*2);
         }
         .col-9{
-           @include flex-basis((100%/12)*9);
+            @include flex-basis((100%/12)*9);
         }
         .col-10{
             @include flex-basis((100%/12)*10);
         }
         .col-11{
-           @include flex-basis((100%/12)*11);
+            @include flex-basis((100%/12)*11);
         }
         .col-12{
-           @include flex-basis(100%);
+            @include flex-basis(100%);
         }
     }
 
 }
+.two-columns{
+    @media screen and (max-width:$screen-md - 1){
+        .main, .sidebar{
+            padding:0 $defaultPadding;
+        }
 
+    }
+    @media screen and (min-width: $screen-md) {
+        .main{
+            width:65%;
+            margin-right: 5%;
+            float:left;
+        }
+        .sidebar{
+            width:25%;
+            float:left;
+        }
+    }
+}
+//Vertical Padding
+.page-content, .page-head{
+    .mod_breadcrumb{
+        padding:$defaultPadding 0 2* $defaultPadding 0;
+    }
+    body:not(.home) &{
+        > .mod_article:not(.first){
+            margin-top:2*$defaultPadding;
+            margin-bottom:2*$defaultPadding;
+            [class*="text-teaser"]{
+                margin:2*$defaultPadding $defaultPadding/2; 
+            }
 
+            &.collapse{
+                margin-top: 0;
+            }
+        } 
+    }
+}
 

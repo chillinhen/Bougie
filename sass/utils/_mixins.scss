@@ -6,6 +6,7 @@
         position: 0% 0%;
     }
 }
+
 @mixin bg-layer($col) {
     @include alpha-background-color(rgba($col, 0.5), white);
     color:lighten($col,100%);
@@ -38,8 +39,7 @@
 @mixin button-style($col){
     background: $col;
     color: white;
-    padding: 1em;
-    width: 33%;
+    padding: 1em 3em;
     letter-spacing: .2em;
 }
 
@@ -60,7 +60,11 @@
     bottom:-3em;
     z-index: 10;
     width:101%;
-    padding:3em 1em;
+    padding:3em 0em;
+    a, span{padding:0 1em;}
+    .sticky & {
+         bottom:-2em;
+    }
 }
 @mixin house-icon{
     background:{
@@ -75,4 +79,9 @@
     line-height: $item;
     -webkit-border-radius: $item/2;
     border-radius: $item/2;
+}
+@mixin collapse{
+    overflow: hidden;
+    height:0;
+    @include transition(all 300ms ease-in);  
 }

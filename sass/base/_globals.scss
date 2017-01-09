@@ -15,14 +15,19 @@ figure{
     margin:0;
 }
 
+hr {
+    border-top:1px solid $borderColor;
+}
+
 .invisible{
-   display:none;
+    display:none;
 }
 .no-mobile{
     @media screen and (max-width:$screen-xs){
         display:none;
     }
 }
+
 
 //Backgrounds & gradients
 .bg-white{
@@ -61,21 +66,88 @@ figure{
     } 
 }
 .blue-text{
-   color:$blueColor !important;
+    color:$blueColor !important;
 }
-.blueAccent{
+.dark-text {
+     &, &  *{
+        color:$blackColor !important;
+    }
+}
+.smaller{
+    @extend h5;
+}
+[class*="Accent"]{
     strong{
         padding:$defaultPadding/4 $defaultPadding/2;
         font-weight:300;
-        background: $blueColor;
         color:$whiteColor;
         display:inline-block;
     }
-}
-.headline{
-    padding:2 * $defaultPadding  0 $defaultPadding 0;
+    .sidebar &.info-box{
+        padding:$defaultMargin * 2 0;       
+        > h1, > h2, > h3, > h4, > h5, > h6, > p{
+            margin-left: $defaultMargin * 1;
+            margin-right: $defaultMargin * 1;
+        }
+        > p:last-of-type {
+            margin-bottom: $defaultMargin;
+        }
+        figure.float_below{
+            margin-bottom: -$defaultMargin * 3;
+        }
+        figure.float_above{
+            margin-top: -$defaultMargin * 3;
+        }
+    }
 }
 
+.blueAccent{
+    background: $blueColor;
+    strong {
+        background: $blueColor;
+    }
+    .sidebar &.info-box{
+        background: $blueColor;
+         &, & *{color:$whiteColor !important;}
+    }
+}
+
+.blueAccent1{
+    background: $blueColor;
+    .newsletter & {
+        @include alpha-background-color(rgba($blueColor, 0.5), white);
+    }
+    strong {
+        background: $blueColor;
+        @media screen and (max-width:$screen-md){
+            padding: 1em;
+        }
+        @media screen and (min-width:$screen-md){
+            padding: 1em 12em;
+        }
+        font-weight: 500;
+    }
+    .sidebar &.info-box{
+        background: $blueColor;
+         &, & *{color:$whiteColor !important;}
+    }
+}
+
+.blackAccent{
+    background: $blackColor;
+    .newsletter & {
+        @include alpha-background-color(rgba($blackColor, 0.5), white);
+    }
+    strong {
+        background: $blackColor;
+        padding: 1em 12em;
+        font-weight: 500;
+    }
+    .sidebar &.info-box{
+        background: $blackColor;
+         &, & *{color:$whiteColor !important;}
+    }
+}
 
 //Paddings/Margins
 .inner-vert-padding{
@@ -183,7 +255,7 @@ figure{
 .more-link{
     text-decoration: none;
     background-image:url(../icons/more-infos-base.png);
-    font-size:$rem-base * 1.125;
+    font-size:inherit;
     line-height:1;
     padding-left:1.5em;
     @include house-icon;
@@ -217,6 +289,7 @@ figure{
     @include align-items(flex-start);
 }
 
+
 .center-content{
     > .container{
         @include display(flex);
@@ -235,7 +308,9 @@ figure{
     @include justify-content(space-between);
     @include align-items(stretch);
 }
-
+.column-reverse{
+    @include flex-direction(column-reverse);
+}
 /** Extras **/
 .circle{
     @include circle-quote(300px);
@@ -267,6 +342,13 @@ figure{
 .skew{
     .container{position:relative;}
     .textPanel{
+        @media screen and (max-device-width:$screen-xs){
+            display:none;
+            height:0;
+            &:before{
+                display:none;
+            }
+        }
         @media screen and (min-device-width:$screen-md){
             position:absolute;
             top:-2em;

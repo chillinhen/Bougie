@@ -1,40 +1,214 @@
+form {
+    @media screen and (max-width:$screen-md){
+    padding:1em;
+}
+}
+input, textarea, select{
+    @include appearance(none);
+    &:focus{
+        border:2px solid $orangeColor;
+    }
+}
+select,
 input[type="text"], 
+input[type="number"],
 input[type="submit"],
 input[type="email"],
 textarea{
-    padding: .7em 1.4em;
+    padding: .7em 0; 
     font-size: $rem-base;
     border:0;
+    text-align: left;
+    
+    .newsletter &{
+        text-align: center;
+    }
+    @include placeholder{
+        padding: 0 1.4em; 
+    }
+
+    &.mandatory{  
+        @include placeholder{
+            background: transparent url(../images/mandatory.png) 100% 50% no-repeat / auto; 
+        }
+    }
 }
+select{
+    padding: .7em 1.4em; 
+}
+
+select,
 input[type="text"], 
+input[type="number"],
 input[type="email"],
 textarea{
     .ce_form & {
         width:100%;
-        border:1px solid $grayColor; 
+        color:$text-muted-color;
+        font-family: open sans;
+        padding-left: 1em;
     }   
 }
-.submit_container{
-    width:100%;
+input[type="checkbox"]{
+    border:2px inset $grayColor;
+    @include size(28px);
+}
+label{
+    @media screen and (min-width:$screen-md){
+        font-size: larger;
+        margin-left: 1em;
+    }
+    line-height: 28px;
+    font-weight: 300;
+    text-align: left;
+}
+select{
+    background:{
+        color:$whiteColor;
+        image:url(../images/bg-select.jpg);
+        position: 98% 50%;
+        repeat:no-repeat;
+        size:auto;
+    }
+}
+input[type="submit"]{
+    &.button{
+        @include button-style($blueColor);
+    }
 }
 
 .ce_form{
-    @include outer-container(70%);
+    .container > & {
+        @include outer-container(70%);
+    }
     .row {
         @extend .flexbox;
-        @extend .equal;
-        margin:1.5em 0;
+        margin:0 -1em; 
+
+        .widget-textarea,
+        .widget-select,
         .widget-text{
-            @include flex-basis(30%);
-            margin:0 1.5%;
+            margin:1em;
+        }
+       
+        &.einverstaendnis{
+            .widget-checkbox {
+                    @include flex(2);
+
+                    fieldset > span{
+                        width:100% !important;
+                        display: block;
+
+                        label{
+                            font-size: $rem-base;
+                            line-height: 1.4;
+                            width:75%;
+                        }
+                    }
+                }
+
+        }
+    }
+    &.objektsuche {
+        .widget-textarea,
+        .widget-select,
+        .widget-text{
+            @include flex-basis(50%);
+            &.strasse{
+                @include flex-basis(55%);
+            }
+            &.plz{
+                @include flex-basis(20%);
+            }
+            &.ort{
+                @include flex-basis(30%);
+            }
+            &.objektart,
+            &.preis,
+            &.zusatzangaben{
+                @include flex-basis(47%); 
+            }
+        }
+        .widget-checkbox {
+            width:100%;
+            fieldset{
+                width:100%;
+                @extend %clearfix;
+                > span {
+                    display:inline-block;
+                    float:left;
+                    width:50%;
+                    float:left;
+                }
+                > span:last-child {
+                    width: 48%; 
+                    float:right;
+                }
+            }
+        }
+    }
+    &.rueckruf {
+        .widget-text{
+            @include flex-basis(33%);   
         }
         .widget-textarea{
-          @include flex-basis(100%); 
-          margin:0 1.5%;
+            @include flex-basis(100%);  
+        } 
+        .submit_container{
+            width: 100%;
+
+        }
+    }
+    fieldset{
+        border:0;
+    }
+    .widget-text, .widget-textarea, .widget-select{
+        border:1px solid $grayColor; 
+        background-color: $whiteColor;
+        @include border-radius (0);
+    }
+
+
+    &.newsletter {
+        max-width: 100%;
+        @media screen and (max-width:$screen-md){
+            padding:$defaultPadding 1em;
+        }
+        @media screen and (min-width:$screen-md){
+          padding:$defaultPadding*1.5 25%;  
+        }
+        
+        background:transparent url(../images/bg-full-width.jpg) no-repeat center center / cover;
+        .submit_container {
+            padding-bottom:$defaultPadding;
+        }
+        .widget-text{
+            text-align: center;
+            flex-basis: 70%;
+            margin:{
+                left:auto;
+                right:auto;
+            }
         }
     }
 }
+
 .widget-headline{
+    padding:0  0 $defaultPadding 0;
+    .newsletter & .lead{
+        @include alpha-background-color(rgba($blueColor, 0.5), white);
+        padding:$defaultPadding/2 $defaultPadding;
+        
+        strong {
+            @extend h2;
+            color:$whiteColor;
+        }
+        
+    }
+
+    .row + &{
+        padding-top:2 * $defaultPadding;
+    }
     > p {
         @extend %lead;
         color:darken($defaultColor,50%);
@@ -65,4 +239,10 @@ textarea{
 }
 .explanation{
     color:$text-muted-color;
+    .newsletter &{
+       color:$blackColor; 
+    }
+}
+.submit_container{
+    margin:0 1em;
 }

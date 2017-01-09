@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAMQ,kCAAuB;AACvB,oCAAyB;ACJ/B,IAAK;EACH,UAAU,EAAE,UAAU;;AAItB,sBAEU;EACR,UAAU,EAAE,OAAO;;ACXzB,6BAA6B;ACY7B,+BAA+B;AAwD/B,iBAAiB;AAgGjB,qEAAqE;AA4BrE,uBAAuB;AAiBvB,qBAAqB;ACjNrB,8BAA8B;AAY9B,oBAAoB",
-"sources": ["../sass/new-styles.scss","../../../../toolbox/bower_components/neat/app/assets/stylesheets/grid/_box-sizing.scss","../../../../toolbox/sass/myMixins/extends.scss","../../../../toolbox/sass/myMixins/mixins.scss","../../../../toolbox/sass/myMixins/breakpoints.scss"],
-"names": [],
-"file": "new-styles.css"
-}

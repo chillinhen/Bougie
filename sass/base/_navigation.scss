@@ -1,3 +1,29 @@
+.mod_customnav { 
+    display: block;
+    &, & * {text-decoration: none;}
+    &.buttons{
+        li{
+            display:block;
+            margin-bottom: $defaultPadding/2;
+
+            a, span {
+                display:block;
+                padding:$defaultPadding/4 $defaultPadding/2;
+                color:$whiteColor;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+            a{
+                background:$blackColor; 
+            }
+            span{
+                background:$blueColor; 
+            }
+        }
+
+    }
+}
+
 .responsive-logo{
     @media screen and (max-width:$screen-md){
         padding:.5em 1em; 
@@ -23,7 +49,15 @@
 #page-header{
     background:$baseColor;
     *{color:white;} 
+    #top-head{
+        @media screen and (min-width:$screen-md){
+            height:55px;  
+        }
+
+        border-width: 0 0 0 0;
+    }
     &.sticky{
+        @include transition(all 300ms ease-in);  
         position: fixed;
         top:0;
         left:0;
@@ -32,7 +66,8 @@
 
         #top-head{
             @media screen and (min-width:$screen-md){
-                borer-top:5px solid $blackColor;
+                @include transition(all 300ms ease-in);  
+                border-top:5px solid $blackColor;
                 height:0;
                 overflow:hidden;
             }
@@ -41,14 +76,44 @@
 }
 .nav-wrapper{
     @media screen and (min-width:$screen-md){
-        @include flex-basis(60%);
+        @include flex-basis(70%);
         @include display(flex);
         @include justify-content(space-between);
-        > .mod_navigation{
+        padding:2em 0;
+        > #main-nav{
             @include flex(2);
-        } 
-    }
+            ul.level_1{
+                > li > a,
+                > li > span {
+                    padding: 0 3em;
+                }
+                .level_2{
+                    > li  > a,
+                    > li > span {
+                        padding: 0 3em;
+                    }
+                }
+            }
+        }
+        ul.level_1{
 
+            .level_2{
+                @include collapse;
+            }
+            &:hover{
+                cursor:pointer;
+            }
+            &.open{
+                .level_2{
+                    height:180px;
+                    @include transition(all 300ms ease-in);  
+                } 
+            }
+        }
+    }
+    @media screen and (min-width:$screen-lg){
+        @include flex-basis(60%);
+    }
 }
 .logo{
     a{
@@ -68,116 +133,120 @@
 }
 
 #navigation {
+
     @include outer-container;
     position: relative;
     @media screen and (max-width:$screen-md){
-        @include transition(all 300ms ease-in);
-        height:0;
         padding-left:1em;
         padding-right:1em;
+        height:0;
         overflow:hidden;
+        .level_1{
+            &.open{
+                margin:2em 0;
+            }
+            li {
+                @include transition(all 300ms ease-in);
+                height:0; 
+                overflow:hidden;}
+        }
         &.show{
-            @include transition(all 300ms ease-out);
+            @include transition(all 300ms ease-in);  
             padding-top:1em;
             padding-bottom:1em;
             height:auto;
+            overflow:scroll;
+            .level_3{
+                padding:0 1em;
+            }
+            .level_1{
+                > li{
+                    @include transition(all 300ms ease-out);
+                    height:66px;
+                } 
+            }
+            li.hover, li.active, li.forward{
+                height:auto !important;
+                
+                > ul > li {
+                    @include transition(all 300ms ease-out);
+                    height:33px;
+                    overflow:auto;
+                    font-size:$rem-base;
+                }
+                
+            }
+
         }
     }
     @media screen and (min-width:$screen-md){
+
         @include display(flex);
-        @include align-items(center);
+        @include align-items(flex-end);
         @include justify-content(space-between);
         height:100%;
-        padding:3em 0;
+        padding:1em 0;
         .sticky & {
             @include transition(all 500ms ease-in);
-            padding:1em 0;
+            padding:0;
             &:hover{
                 @include transition(all 500ms ease-in);
-                padding:3em 0; 
-            }
-        }
-        ul.level_2{display:none;}
-        &:hover{
-            @include align-items(flex-end);
-            cursor: pointer;
-            #main-nav {
-                .level_2{
-                    display:block;
-                }
+                padding:0; 
             }
         }
     }
 }
 
 #main-nav {
-    #page-header & {
-        @extend .uppercase;
-        li {
-            @media screen and (max-width:$screen-md){
-                display:block;
-
-                > span,
-                > a{
-                    display:block;
-                    padding:1em 0;
-                    border-bottom:1px solid white;
-                }
-                &:last-child{
-                    a, span{
-                        border:0;
-                    }
-                }
-            }
+    @extend .uppercase;
+    li {
+        &, & > a, & > span {
+            width:100%;
+            display:block;
         }
-        .level_1{
-            width: 100%;
-            @media screen and (max-width:$screen-md){
-                margin-bottom:1em;
-                .level_2{
-                    @media screen and (max-width:$screen-md){
-                        height:0;
-                        overflow:hidden;
-                    }
-                }
-                li:hover, li:focus{
-                    .level_2{
-                        height:auto;
-                        @include transition(all 2s ease-out);
-                        overflow: no-content;
-                    }
+
+    }
+    li {
+        @media screen and (max-width:$screen-md){
+            a, span{
+                padding:1em 0;
+                border-bottom:1px solid white;
+            }
+            &:last-child{
+                a, span{border:0;}
+            }
+                    
+        }
+    }
+    .level_1{
+        width: 100%;     
+        @media screen and (min-width:$screen-md){
+            @include display(flex);
+            > li {
+                @include flex-basis(100%/3); 
+                position:relative;
+                border-right:1px solid lighten($darkGrayColor,25%);
+                &:last-child{
+                    border:0;
                 }
             }
-            @media screen and (min-width:$screen-md){
-                @include display(flex);
-                > li {
-                    @include flex-basis(100%/3); 
-                    position:relative;
-                    padding: 0 3em;
-                    border-right:1px solid lighten($darkGrayColor,25%);
-                    &:last-child{
-                        border:0;
-                    }
-                }
-                .level_2{
-                    > li{
-                        &:hover{
-                            @media screen and (min-width:$screen-md){
-                                width:200%;
+            .level_2{
+
+                > li{
+                    display:block;
+                    &:hover{
+                        @media screen and (min-width:$screen-md){
+                            .level_3{
                                 display:block;
-                                .level_3{
-                                    display:block;
-                                    @include show-level_3;
-                                }
+                                @include show-level_3;
                             }
                         }
                     }
                 }
-                .level_3{
-                    display:none;
-                }
             }
-
+            .level_3{
+                display:none;
+            }
         }
 
     }
@@ -196,32 +265,23 @@
     @media screen and (min-width:$screen-sm){
         padding:$vertPadding $horPadding; 
     }
-
-    ul.level_1{
-        > li.submenu > a,
-        > li.submenu > span{
-            @extend %footerHeaderstyle;
-        }
+    [class*="col-"].flexbox{
         @media screen and (min-width:$screen-sm){
-            padding-right:$horPadding;
+            padding-right:1.5 * $horPadding;
             @include display(flex);
             @include justify-content(space-between);
             @include align-items(flex-start); 
         }
+    }
+    .mod_customnav ul.level_1 li.first{
+        a, span {@extend %footerHeaderstyle;}
+
         @media screen and (max-width:$screen-sm - 1){
-            > li.submenu > a,
-            > li.submenu > span{
-
-                padding-top:$defaultPadding/2;
-                margin-top:$defaultPadding/2;
-                border-top:1px solid $defaultColor;
-            }
-            > li.submenu:first-child > a,
-                > li.submenu:first-child > span{
-                border:0; 
-            }
+            padding-top:$defaultPadding/2;
+            margin-top:$defaultPadding/2;
+            border-top:1px solid $defaultColor;
+            &:first-child > a,:first-child > span{border:0; }
         }
-
     }
     hr {
         margin-bottom: 2em;

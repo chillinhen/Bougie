@@ -1,0 +1,50 @@
+.ce_accordion {
+       border-top: 1px solid $grayColor;
+       &:first-child{border:0;}
+}
+
+.toggler {
+    min-width:250px;
+    max-width:1200px;
+
+    &:focus{
+        outline:0;
+    }
+    &.open{
+        .toggler_first:before{
+            @include transform(rotate(90deg));
+            @include transform-origin(center bottom);
+        }
+    }
+}
+.toggler_first {
+    display:block;
+    padding:1.5em 0;
+    color:$goldColor;
+    font-family: $headings-font-family;
+    font-size:1.5 * $rem-base;
+    behavior:url('assets/css3pie/1.0.0/PIE.htc');
+
+    :a{color:$orangeColor;}
+    &:hover,.toggler.active &{
+        font-weight:500;
+        color:$goldColor;
+        cursor:pointer; 
+    }
+    &:before{
+        @include size(20px);
+        float:left;
+        display:inline-block;
+        margin:0 1em 0 0;
+        behavior:url('assets/css3pie/1.0.0/PIE.htc');
+        color:$goldColor;
+/*    padding-right:3px;
+    padding-left:3px;
+    text-align:center;*/
+    content:" » ";
+    }
+}
+.accordion  {
+    padding:6px 0 8px 15px;
+    line-height:16px;
+}
